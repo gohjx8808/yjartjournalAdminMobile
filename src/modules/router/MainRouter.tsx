@@ -1,5 +1,5 @@
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import RawStocks from "../rawStock/views/RawStocks";
+import YarnStocks from "../yarnStock/views/YarnStocks";
 import React from "react";
 
 const Stack = createNativeStackNavigator();
@@ -8,9 +8,9 @@ const MainRouter = (): JSX.Element => {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
-				name="Home"
-				component={RawStocks}
-				options={{title: "Welcome"}}
+				name="yarnStock"
+				component={YarnStocks}
+				options={{title: "Yarn Stocks"}}
 			/>
 		</Stack.Navigator>
 	);
