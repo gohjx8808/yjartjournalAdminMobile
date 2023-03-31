@@ -10,7 +10,7 @@ module.exports = {
 		sourceType: "module",
 		project: ["tsconfig.json"],
 	},
-	plugins: ["react"],
+	plugins: ["react", "react-native"],
 	rules: {},
 	settings: {
 		react: {
