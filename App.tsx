@@ -17,11 +17,11 @@ const App = (): JSX.Element => {
 
 	return (
 		<SafeAreaProvider>
-			<NavigationContainer>
-				<ThemeProvider theme={theme}>
+			<ThemeProvider theme={theme}>
+				<NavigationContainer>
 					<MainRouter />
-				</ThemeProvider>
-			</NavigationContainer>
+				</NavigationContainer>
+			</ThemeProvider>
 		</SafeAreaProvider>
 	);
 };
