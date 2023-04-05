@@ -8,9 +8,11 @@ const App = (): JSX.Element => {
 	const theme = createTheme({
 		lightColors: {
 			primary: "#f5dbc9",
+			secondary: "#B57B5E",
 		},
 		darkColors: {
-			primary: "#B67B5E",
+			primary: "#B57B5E",
+			secondary: "#f5dbc9",
 		},
 		mode: "light",
 	});

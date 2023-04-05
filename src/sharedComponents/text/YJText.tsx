@@ -5,13 +5,21 @@ import { StyleSheet } from "react-native";
 
 interface YJTextProps extends TextProps {
 	bold?: boolean;
+	center?: boolean;
 }
 
 const YJText = (props: YJTextProps): JSX.Element => {
-	const { children, bold } = props;
+	const { children, bold, center } = props;
 
 	return (
-		<Text style={(bold ?? false) && styles.bold} {...props}>
+		<Text
+			{...props}
+			style={[
+				(bold ?? false) && styles.bold,
+				(center ?? false) && styles.center,
+				props.style,
+			]}
+		>
 			{children}
 		</Text>
 	);
@@ -22,5 +30,8 @@ export default YJText;
 const styles = StyleSheet.create({
 	bold: {
 		fontWeight: "bold",
+	},
+	center: {
+		textAlign: "center",
 	},
 });
