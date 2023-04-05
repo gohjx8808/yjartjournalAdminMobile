@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import MainRouter from "./src/modules/router/MainRouter";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { createTheme, ThemeProvider } from "@rneui/themed";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const App = (): JSX.Element => {
 	const theme = createTheme({
@@ -17,12 +18,16 @@ const App = (): JSX.Element => {
 		mode: "light",
 	});
 
+	const client = new QueryClient();
+
 	return (
 		<SafeAreaProvider>
 			<ThemeProvider theme={theme}>
-				<NavigationContainer>
-					<MainRouter />
-				</NavigationContainer>
+				<QueryClientProvider client={client}>
+					<NavigationContainer>
+						<MainRouter />
+					</NavigationContainer>
+				</QueryClientProvider>
 			</ThemeProvider>
 		</SafeAreaProvider>
 	);
