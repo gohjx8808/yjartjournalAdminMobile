@@ -3,6 +3,7 @@ import YJText from "../../../sharedComponents/text/YJText";
 import { View } from "react-native";
 import { useForm } from "react-hook-form";
 import ControlledCheckbox from "../../../sharedComponents/inputs/ControlledCheckbox";
+import { useAllYarnCategories } from "../src/queries/yarnStockQueries";
 
 interface YarnStockFilterDialogProps {
 	visible: boolean;
@@ -19,17 +20,22 @@ const YarnStockFilterDialog = (props: YarnStockFilterDialogProps) => {
 		toggleDialog(false);
 	};
 
+	const { data: yarnCategories } = useAllYarnCategories();
+
 	return (
 		<Dialog isVisible={visible} onBackdropPress={closeModal}>
 			<Dialog.Title title="Filter Yarn Stock" />
 			<YJText bold>Yarn Category</YJText>
 			<View>
-				<ControlledCheckbox
-					control={control}
-					title="test checkbox"
-					name="test"
-					themeColor="secondary"
-				/>
+				{yarnCategories?.map(category => (
+					<ControlledCheckbox
+						key={category.id}
+						control={control}
+						title={category.name}
+						name={category.id.toString()}
+						themeColor="secondary"
+					/>
+				))}
 			</View>
 			<YJText bold>Yarn Color Category</YJText>
 			<View>
