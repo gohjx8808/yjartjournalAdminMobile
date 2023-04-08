@@ -7,15 +7,16 @@ interface ControlledCheckboxProps
 	extends Omit<UseControllerProps<Record<string, boolean>>, "children">,
 		Omit<CheckBoxProps, "checked" | "children"> {
 	themeColor: "primary" | "secondary";
+	onChangeCustom?: () => void;
 }
 
 const ControlledCheckbox = (props: ControlledCheckboxProps) => {
 	const { theme } = useTheme();
-	const { name, control, themeColor } = props;
+	const { name, control, defaultValue, themeColor, onChangeCustom } = props;
 
 	const {
 		field: { value, onChange },
-	} = useController({ name, control });
+	} = useController({ name, control, defaultValue });
 
 	return (
 		<CheckBox
@@ -24,6 +25,9 @@ const ControlledCheckbox = (props: ControlledCheckboxProps) => {
 			checkedColor={theme.colors[themeColor]}
 			onPress={() => {
 				onChange(!value);
+				if (onChangeCustom !== undefined) {
+					onChangeCustom();
+				}
 			}}
 		/>
 	);
