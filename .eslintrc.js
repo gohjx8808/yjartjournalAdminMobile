@@ -11,7 +11,10 @@ module.exports = {
 		project: ["tsconfig.json"],
 	},
 	plugins: ["react", "react-native"],
-	rules: {},
+	rules: {
+		"@typescript-eslint/explicit-function-return-type": "off",
+		"react/react-in-jsx-scope": "off",
+	},
 	settings: {
 		react: {
 			version: "detect",
