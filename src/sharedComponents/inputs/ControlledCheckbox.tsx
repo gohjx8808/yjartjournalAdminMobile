@@ -4,7 +4,7 @@ import { useController } from "react-hook-form";
 import type { UseControllerProps } from "react-hook-form";
 
 interface ControlledCheckboxProps
-	extends Omit<UseControllerProps<Record<string, boolean>>, "children">,
+	extends Omit<UseControllerProps<any>, "children">,
 		Omit<CheckBoxProps, "checked" | "children"> {
 	themeColor: "primary" | "secondary";
 	onChangeCustom?: () => void;
@@ -24,7 +24,9 @@ const ControlledCheckbox = (props: ControlledCheckboxProps) => {
 			checked={value}
 			checkedColor={theme.colors[themeColor]}
 			onPress={() => {
-				onChange(!value);
+				if (typeof value === "boolean") {
+					onChange(!value);
+				}
 				if (onChangeCustom !== undefined) {
 					onChangeCustom();
 				}

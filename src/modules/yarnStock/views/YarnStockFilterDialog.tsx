@@ -17,7 +17,7 @@ const YarnStockFilterDialog = (props: YarnStockFilterDialogProps) => {
 	const { visible, toggleDialog } = props;
 	const { theme } = useTheme();
 
-	const { control, getValues } = useForm();
+	const { control, getValues } = useForm<yarnStock.yarnStockFilter>();
 
 	const closeModal = () => {
 		toggleDialog(false);
@@ -28,7 +28,21 @@ const YarnStockFilterDialog = (props: YarnStockFilterDialogProps) => {
 
 	const onFilter = () => {
 		const formValues = getValues();
-		console.log(formValues);
+		const yarnCategoryIds: number[] = [];
+		formValues.category.map((catValue, index) => {
+			if (catValue) {
+				yarnCategoryIds.push(index);
+			}
+			return false;
+		});
+		const yarnColorCategoryIds: number[] = [];
+		formValues.colorCategory.map((catColorValue, index) => {
+			if (catColorValue) {
+				yarnColorCategoryIds.push(index);
+			}
+			return false;
+		});
+		console.log(yarnColorCategoryIds);
 	};
 
 	return (
