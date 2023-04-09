@@ -7,6 +7,8 @@ import {
 	useAllYarnCategories,
 	useAllYarnColorCategories,
 } from "../src/queries/yarnStockQueries";
+import { useContext } from "react";
+import { YarnStockFilterContext } from "../../../context/YarnStockFilterContext";
 
 interface YarnStockFilterDialogProps {
 	visible: boolean;
@@ -26,23 +28,29 @@ const YarnStockFilterDialog = (props: YarnStockFilterDialogProps) => {
 	const { data: yarnCategories } = useAllYarnCategories();
 	const { data: yarnColorCategories } = useAllYarnColorCategories();
 
+	const {
+		yarnCategoryIds,
+		setYarnCategoryIds,
+		yarnColorCategoryIds,
+		setYarnColorCategoryIds,
+	} = useContext(YarnStockFilterContext);
+
 	const onFilter = () => {
 		const formValues = getValues();
-		const yarnCategoryIds: number[] = [];
-		formValues.category.map((catValue, index) => {
+		const formYarnCategoryIds: number[] = [];
+		formValues.category.forEach((catValue, index) => {
 			if (catValue) {
-				yarnCategoryIds.push(index);
+				formYarnCategoryIds.push(index);
 			}
-			return false;
 		});
-		const yarnColorCategoryIds: number[] = [];
-		formValues.colorCategory.map((catColorValue, index) => {
+		setYarnCategoryIds(formYarnCategoryIds);
+		const formYarnColorCategoryIds: number[] = [];
+		formValues.colorCategory.forEach((catColorValue, index) => {
 			if (catColorValue) {
-				yarnColorCategoryIds.push(index);
+				formYarnColorCategoryIds.push(index);
 			}
-			return false;
 		});
-		console.log(yarnColorCategoryIds);
+		setYarnColorCategoryIds(formYarnColorCategoryIds);
 	};
 
 	return (
@@ -57,8 +65,12 @@ const YarnStockFilterDialog = (props: YarnStockFilterDialogProps) => {
 						title={category.name}
 						name={`category.${category.id.toString()}`}
 						themeColor="secondary"
-						defaultValue={true}
+						defaultValue={yarnCategoryIds.includes(category.id)}
 						onChangeCustom={onFilter}
+						disabled={
+							yarnCategoryIds.length === 1 &&
+							yarnCategoryIds.includes(category.id)
+						}
 					/>
 				))}
 			</View>
@@ -71,8 +83,12 @@ const YarnStockFilterDialog = (props: YarnStockFilterDialogProps) => {
 						title={colorCategory.name}
 						name={`colorCategory.${colorCategory.id.toString()}`}
 						themeColor="secondary"
-						defaultValue={true}
+						defaultValue={yarnColorCategoryIds.includes(colorCategory.id)}
 						onChangeCustom={onFilter}
+						disabled={
+							yarnColorCategoryIds.length === 1 &&
+							yarnColorCategoryIds.includes(colorCategory.id)
+						}
 					/>
 				))}
 			</View>

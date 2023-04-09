@@ -4,6 +4,7 @@ import MainRouter from "./src/modules/router/MainRouter";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { createTheme, ThemeProvider } from "@rneui/themed";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { YarnStockFilterContextProvider } from "./src/context/YarnStockFilterContext";
 
 const App = (): JSX.Element => {
 	const theme = createTheme({
@@ -24,9 +25,11 @@ const App = (): JSX.Element => {
 		<SafeAreaProvider>
 			<ThemeProvider theme={theme}>
 				<QueryClientProvider client={client}>
-					<NavigationContainer>
-						<MainRouter />
-					</NavigationContainer>
+					<YarnStockFilterContextProvider>
+						<NavigationContainer>
+							<MainRouter />
+						</NavigationContainer>
+					</YarnStockFilterContextProvider>
 				</QueryClientProvider>
 			</ThemeProvider>
 		</SafeAreaProvider>
