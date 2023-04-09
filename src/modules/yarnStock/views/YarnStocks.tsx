@@ -4,11 +4,16 @@ import RoundedButton from "../../../sharedComponents/button/RoundedButton";
 import { FAB, useTheme } from "@rneui/themed";
 import YJText from "../../../sharedComponents/text/YJText";
 import YarnStockFilterDialog from "./YarnStockFilterDialog";
+import { useAllYarnStock } from "../src/queries/yarnStockQueries";
 
 const YarnStocks = () => {
 	const { theme } = useTheme();
 
 	const [filterModal, setFilterModal] = useState(false);
+
+	const { data } = useAllYarnStock();
+
+	console.log(data);
 
 	const openFilterModal = () => {
 		setFilterModal(true);

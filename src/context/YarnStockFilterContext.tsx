@@ -43,8 +43,6 @@ export const YarnStockFilterContextProvider = (props: PropsWithChildren) => {
 		setYarnColorCategoryIds(tempColorCategoryId);
 	}, [yarnCategories, yarnColorCategories]);
 
-	console.log(yarnCategoryIds);
-
 	return (
 		<YarnStockFilterContext.Provider
 			value={{
