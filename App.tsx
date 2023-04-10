@@ -5,6 +5,8 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { createTheme, ThemeProvider } from "@rneui/themed";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { YarnStockFilterContextProvider } from "./src/context/YarnStockFilterContext";
+import StatusDialog from "./src/sharedComponents/dialog/StatusDialog";
+import { StatusDialogContextProvider } from "./src/context/StatusDialogContext";
 
 const App = (): JSX.Element => {
 	const theme = createTheme({
@@ -26,9 +28,12 @@ const App = (): JSX.Element => {
 			<ThemeProvider theme={theme}>
 				<QueryClientProvider client={client}>
 					<YarnStockFilterContextProvider>
-						<NavigationContainer>
-							<MainRouter />
-						</NavigationContainer>
+						<StatusDialogContextProvider>
+							<NavigationContainer>
+								<MainRouter />
+								<StatusDialog />
+							</NavigationContainer>
+						</StatusDialogContextProvider>
 					</YarnStockFilterContextProvider>
 				</QueryClientProvider>
 			</ThemeProvider>

@@ -4,6 +4,7 @@ import { formatCurrency } from "../../../helpers/helpers";
 import ClearButton from "../../../sharedComponents/button/ClearButton";
 import SpaceBetweenText from "../../../sharedComponents/text/SpaceBetweenText";
 import YJText from "../../../sharedComponents/text/YJText";
+import { useUpdateYarnStockQuantity } from "../src/queries/yarnStockMutations";
 
 interface YarnStockCardProps {
 	stock: yarnStock.yarnStockData;
@@ -12,6 +13,12 @@ interface YarnStockCardProps {
 const YarnStockCard = (props: YarnStockCardProps) => {
 	const { stock } = props;
 	const styles = useStyles();
+
+	const { mutate } = useUpdateYarnStockQuantity();
+
+	const onModifyQuantity = (modifiedQuantity: number) => {
+		mutate({ quantity: modifiedQuantity, yarnId: stock.id });
+	};
 
 	return (
 		<Card containerStyle={{ width: "80%" }} key={stock.id}>
@@ -44,15 +51,29 @@ const YarnStockCard = (props: YarnStockCardProps) => {
 			<SpaceBetweenText
 				frontText="Reorder Status"
 				backText={stock.reorderStatus}
-				textColor="green"
+				textColor={stock.reorderStatus === "Optimum" ? "green" : "red"}
 			/>
 			<YJText center bold style={styles.stockTitle}>
 				In Stock Quantity
 			</YJText>
 			<View style={styles.quantityActionContainer}>
-				<ClearButton themeColor="secondary">-</ClearButton>
+				<ClearButton
+					themeColor="secondary"
+					onPress={() => {
+						onModifyQuantity(stock.inStockQuantity - 1);
+					}}
+				>
+					-
+				</ClearButton>
 				<YJText>{stock.inStockQuantity}</YJText>
-				<ClearButton themeColor="secondary">+</ClearButton>
+				<ClearButton
+					themeColor="secondary"
+					onPress={() => {
+						onModifyQuantity(stock.inStockQuantity + 1);
+					}}
+				>
+					+
+				</ClearButton>
 			</View>
 		</Card>
 	);

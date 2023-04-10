@@ -19,6 +19,11 @@ declare namespace yarnStock {
 		lastOrderedAt: string;
 		yarnColorCategory: optionData;
 		yarnCategory: optionData;
-		reorderStatus: "optimum" | "reorder";
+		reorderStatus: "Optimum" | "Reorder";
+	}
+
+	interface updateQuantityPayload {
+		yarnId: number;
+		quantity: number;
 	}
 }

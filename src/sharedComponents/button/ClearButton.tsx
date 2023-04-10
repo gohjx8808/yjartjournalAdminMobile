@@ -10,7 +10,7 @@ const ClearButton = (props: ClearButtonProps) => {
 	const styles = useStyles(props);
 
 	return (
-		<Button type="clear" titleStyle={styles.buttonTitleStyle}>
+		<Button {...props} type="clear" titleStyle={styles.buttonTitleStyle}>
 			{children}
 		</Button>
 	);
