@@ -27,5 +27,6 @@ export const useAllYarnStock = () => {
 		async () =>
 			(await getAllYarnStock({ yarnCategoryIds, yarnColorCategoryIds }))?.data
 				.data,
+		{ enabled: yarnCategoryIds.length > 0 && yarnColorCategoryIds.length > 0 },
 	);
 };

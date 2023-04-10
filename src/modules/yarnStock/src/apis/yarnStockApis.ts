@@ -1,8 +1,6 @@
-import { getRequest } from "../../../../helpers/apiUtils";
+import { postRequest } from "../../../../helpers/apiUtils";
 
 export const getAllYarnStock = async (
 	payload: yarnStock.getAllYarnStockPayload,
 ) =>
-	await getRequest<yarnStock.yarnStockData[]>("/stocks/yarn-stocks", {
-		payload,
-	});
+	await postRequest<yarnStock.yarnStockData[]>("/stocks/yarn-stocks", payload);
