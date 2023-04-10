@@ -1,7 +1,7 @@
 import type { ButtonProps } from "@rneui/base";
 import { Button, makeStyles } from "@rneui/themed";
 
-interface ClearButtonProps extends ButtonProps {
+export interface ClearButtonProps extends ButtonProps {
 	themeColor?: "primary" | "secondary";
 }
 

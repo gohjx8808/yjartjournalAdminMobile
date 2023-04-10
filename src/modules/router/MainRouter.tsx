@@ -1,12 +1,22 @@
-import React from "react";
+/* eslint-disable @typescript-eslint/consistent-type-definitions */
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import Dashboard from "./dashboard/views/Dashboard";
-import { getHeaderTitle } from "@react-navigation/elements";
-import YJHeader from "../../layout/YJHeader";
-import { useTheme } from "@rneui/themed";
-import routeNames from "./routeNames";
-import YarnStocks from "../yarnStock/views/YarnStocks";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useTheme } from "@rneui/themed";
+import React from "react";
+import AddYarnStock from "../yarnStock/views/AddYarnStock";
+import YarnStocks from "../yarnStock/views/YarnStocks";
+import Dashboard from "./dashboard/views/Dashboard";
+import routeNames from "./routeNames";
+
+export interface YarnStockNavigatorParamList {
+	[routeNames.YARN_CATEGORY]: undefined;
+	[routeNames.ADD_YARN_STOCK]: undefined;
+}
+
+export type DrawerParamList = {
+	[routeNames.DASHBOARD]: undefined;
+	[routeNames.YARN_NAV]: undefined;
+};
 
 const Drawer = createDrawerNavigator();
 const YarnStockStack = createNativeStackNavigator();
@@ -21,6 +31,10 @@ const YarnStockNavigator = (): JSX.Element => {
 				name={routeNames.YARN_CATEGORY}
 				component={YarnStocks}
 			/>
+			<YarnStockStack.Screen
+				name={routeNames.ADD_YARN_STOCK}
+				component={AddYarnStock}
+			/>
 		</YarnStockStack.Navigator>
 	);
 };
@@ -33,12 +47,7 @@ const MainRouter = (): JSX.Element => {
 			useLegacyImplementation={true}
 			initialRouteName={routeNames.YARN_NAV}
 			screenOptions={{
-				header: headerProps => {
-					const { options, route } = headerProps;
-					const title = getHeaderTitle(options, route.name);
-
-					return <YJHeader {...headerProps} title={title} />;
-				},
+				headerShown: false,
 				drawerActiveTintColor: theme.colors.secondary,
 				drawerActiveBackgroundColor: theme.colors.primary,
 			}}
