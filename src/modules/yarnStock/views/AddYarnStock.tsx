@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/prefer-ts-expect-error */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Button, makeStyles } from "@rneui/themed";
 import { useForm } from "react-hook-form";
 import ControlledTextInput from "../../../sharedComponents/inputs/ControlledTextInput";
@@ -20,6 +22,8 @@ const AddYarnStock = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm({ resolver: yupResolver(AddYarnStockSchema) });
+
+	console.log(errors.yarnCategory);
 
 	const { data: yarnCategories } = useAllYarnCategories();
 	const { data: yarnColorCategories } = useAllYarnColorCategories();
@@ -63,12 +67,16 @@ const AddYarnStock = () => {
 					name="yarnCategory"
 					title="Yarn Category"
 					options={yarnCategories ?? []}
+					// @ts-ignore
+					errorMessage={errors.yarnCategory?.id.message?.toString()}
 				/>
 				<ControlledSelect
 					control={control}
 					name="yarnColorCategory"
 					title="Yarn Color Category"
 					options={yarnColorCategories ?? []}
+					// @ts-ignore
+					errorMessage={errors.yarnColorCategory?.id.message?.toString()}
 				/>
 				<ControlledDatePicker
 					control={control}

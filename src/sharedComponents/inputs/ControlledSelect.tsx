@@ -6,13 +6,15 @@ import SelectOptionsDialog from "./SelectOptionsDialog";
 import { useState } from "react";
 import YJText from "../text/YJText";
 import OutlineButton from "../button/OutlineButton";
+import ErrorText from "../text/ErrorText";
 
 interface ControlledSelectProps extends UseControllerProps, ClearButtonProps {
 	options: optionData[];
+	errorMessage: string | undefined;
 }
 
 const ControlledSelect = (props: ControlledSelectProps) => {
-	const { control, name, title, options } = props;
+	const { control, name, title, options, errorMessage } = props;
 	const [selectDialogOpen, setSelectDialogOpen] = useState(false);
 
 	const {
@@ -42,6 +44,7 @@ const ControlledSelect = (props: ControlledSelectProps) => {
 				onChange={onChange}
 				selected={value}
 			/>
+			{errorMessage !== undefined && <ErrorText>{errorMessage}</ErrorText>}
 		</>
 	);
 };
