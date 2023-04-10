@@ -1,21 +1,23 @@
 /* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, makeStyles } from "@rneui/themed";
 import { useForm } from "react-hook-form";
-import ControlledTextInput from "../../../sharedComponents/inputs/ControlledTextInput";
 import { ScrollView } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import YJHeader from "../../../layout/YJHeader";
+import ControlledDatePicker from "../../../sharedComponents/inputs/ControlledDatePicker";
 import ControlledSelect from "../../../sharedComponents/inputs/ControlledSelect";
+import ControlledTextInput from "../../../sharedComponents/inputs/ControlledTextInput";
+import AddYarnStockSchema from "../../../validationSchemas/AddYarnStockSchema";
 import {
 	useAllYarnCategories,
 	useAllYarnColorCategories,
 } from "../src/queries/yarnStockQueries";
-import YJHeader from "../../../layout/YJHeader";
-import ControlledDatePicker from "../../../sharedComponents/inputs/ControlledDatePicker";
-import { yupResolver } from "@hookform/resolvers/yup";
-import AddYarnStockSchema from "../../../validationSchemas/AddYarnStockSchema";
 
 const AddYarnStock = () => {
 	const styles = useStyles();
+	const insets = useSafeAreaInsets();
 
 	const {
 		control,
@@ -34,7 +36,11 @@ const AddYarnStock = () => {
 
 	return (
 		<YJHeader title="Add Yarn Stock" back>
-			<ScrollView contentContainerStyle={styles.scrollViewContent}>
+			<ScrollView
+				contentInset={{ bottom: insets.bottom }}
+				contentInsetAdjustmentBehavior="automatic"
+				contentContainerStyle={styles.scrollViewContent}
+			>
 				<ControlledTextInput
 					control={control}
 					name="detailedColor"
