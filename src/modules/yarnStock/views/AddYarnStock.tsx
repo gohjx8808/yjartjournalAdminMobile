@@ -9,13 +9,24 @@ import {
 } from "../src/queries/yarnStockQueries";
 import YJHeader from "../../../layout/YJHeader";
 import ControlledDatePicker from "../../../sharedComponents/inputs/ControlledDatePicker";
+import { yupResolver } from "@hookform/resolvers/yup";
+import AddYarnStockSchema from "../../../validationSchemas/AddYarnStockSchema";
 
 const AddYarnStock = () => {
 	const styles = useStyles();
 
-	const { control } = useForm();
+	const {
+		control,
+		handleSubmit,
+		formState: { errors },
+	} = useForm({ resolver: yupResolver(AddYarnStockSchema) });
+
 	const { data: yarnCategories } = useAllYarnCategories();
 	const { data: yarnColorCategories } = useAllYarnColorCategories();
+
+	const onSubmit = () => {
+		console.log("submit");
+	};
 
 	return (
 		<YJHeader title="Add Yarn Stock" back>
@@ -24,24 +35,28 @@ const AddYarnStock = () => {
 					control={control}
 					name="detailedColor"
 					label="Detailed Color"
+					errorMessage={errors.detailedColor?.message?.toString()}
 				/>
 				<ControlledTextInput
 					control={control}
 					keyboardType="numeric"
 					name="cost"
 					label="Cost"
+					errorMessage={errors.cost?.message?.toString()}
 				/>
 				<ControlledTextInput
 					control={control}
 					keyboardType="numeric"
 					name="quantity"
 					label="Quantity"
+					errorMessage={errors.quantity?.message?.toString()}
 				/>
 				<ControlledTextInput
 					control={control}
 					keyboardType="numeric"
 					name="reorderLevel"
 					label="Reorder Level"
+					errorMessage={errors.reorderLevel?.message?.toString()}
 				/>
 				<ControlledSelect
 					control={control}
@@ -60,7 +75,11 @@ const AddYarnStock = () => {
 					name="lastOrderedAt"
 					title="Last Ordered Date"
 				/>
-				<Button color="secondary" containerStyle={styles.submitBtnContainer}>
+				<Button
+					color="secondary"
+					containerStyle={styles.submitBtnContainer}
+					onPress={handleSubmit(onSubmit)}
+				>
 					Submit
 				</Button>
 			</ScrollView>
