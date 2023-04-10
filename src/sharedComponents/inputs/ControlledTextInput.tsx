@@ -4,7 +4,7 @@ import { useController } from "react-hook-form";
 import type { UseControllerProps } from "react-hook-form";
 
 interface ControlledTextInputProps
-	extends UseControllerProps,
+	extends UseControllerProps<any>,
 		Omit<InputProps, "defaultValue"> {}
 
 const ControlledTextInput = (props: ControlledTextInputProps) => {

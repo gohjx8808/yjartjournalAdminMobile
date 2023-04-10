@@ -8,7 +8,9 @@ import YJText from "../text/YJText";
 import OutlineButton from "../button/OutlineButton";
 import ErrorText from "../text/ErrorText";
 
-interface ControlledSelectProps extends UseControllerProps, ClearButtonProps {
+interface ControlledSelectProps
+	extends UseControllerProps<any>,
+		ClearButtonProps {
 	options: optionData[];
 	errorMessage: string | undefined;
 }

@@ -5,7 +5,7 @@ import YJText from "../text/YJText";
 import { useState } from "react";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 
-interface ControlledDatePickerProps extends UseControllerProps {
+interface ControlledDatePickerProps extends UseControllerProps<any> {
 	title: string;
 }
 

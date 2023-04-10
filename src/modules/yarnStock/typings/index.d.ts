@@ -26,4 +26,13 @@ declare namespace yarnStock {
 		yarnId: number;
 		quantity: number;
 	}
+
+	interface addYarnStockPayload {
+		yarnCategory: optionData;
+		yarnColorCategory: optionData;
+		detailedColor: string;
+		cost: number;
+		quantity: number;
+		reorderLevel: number;
+	}
 }
