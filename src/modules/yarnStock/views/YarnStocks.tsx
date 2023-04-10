@@ -1,19 +1,16 @@
-import { ScrollView, View } from "react-native";
-import React, { useState } from "react";
-import RoundedButton from "../../../sharedComponents/button/RoundedButton";
 import { FAB, useTheme } from "@rneui/themed";
-import YJText from "../../../sharedComponents/text/YJText";
-import YarnStockFilterDialog from "./YarnStockFilterDialog";
+import React, { useState } from "react";
+import { ScrollView } from "react-native";
 import { useAllYarnStock } from "../src/queries/yarnStockQueries";
+import YarnStockCard from "./YarnStockCard";
+import YarnStockFilterDialog from "./YarnStockFilterDialog";
 
 const YarnStocks = () => {
 	const { theme } = useTheme();
 
 	const [filterModal, setFilterModal] = useState(false);
 
-	const { data } = useAllYarnStock();
-
-	console.log(data);
+	const { data: yarnStock } = useAllYarnStock();
 
 	const openFilterModal = () => {
 		setFilterModal(true);
@@ -21,31 +18,26 @@ const YarnStocks = () => {
 
 	return (
 		<>
-			<View style={{ flexGrow: 1 }}>
-				<YJText h4 bold center style={{ paddingVertical: 20 }}>
-					Yarn Categories
-				</YJText>
-				<ScrollView
-					contentContainerStyle={{
-						justifyContent: "center",
-						alignItems: "center",
-					}}
-				>
-					<RoundedButton
-						title="Yarn"
-						buttonStyle={{ backgroundColor: theme.colors.secondary }}
-					/>
-				</ScrollView>
-				<FAB
-					placement="right"
-					icon={{
-						name: "filter",
-						type: "font-awesome-5",
-						color: theme.colors.primary,
-					}}
-					onPress={openFilterModal}
-				/>
-			</View>
+			<ScrollView
+				contentContainerStyle={{
+					justifyContent: "center",
+					alignItems: "center",
+				}}
+				style={{ flexGrow: 1 }}
+			>
+				{yarnStock?.map(stock => (
+					<YarnStockCard stock={stock} key={stock.id} />
+				))}
+			</ScrollView>
+			<FAB
+				placement="right"
+				icon={{
+					name: "filter",
+					type: "font-awesome-5",
+					color: theme.colors.primary,
+				}}
+				onPress={openFilterModal}
+			/>
 			<YarnStockFilterDialog
 				visible={filterModal}
 				toggleDialog={setFilterModal}
