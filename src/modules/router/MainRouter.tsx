@@ -3,9 +3,9 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useTheme } from "@rneui/themed";
 import React from "react";
+import Dashboard from "../dashboard/views/Dashboard";
 import AddYarnStock from "../yarnStock/views/AddYarnStock";
 import YarnStocks from "../yarnStock/views/YarnStocks";
-import Dashboard from "./dashboard/views/Dashboard";
 import routeNames from "./routeNames";
 
 export interface YarnStockNavigatorParamList {

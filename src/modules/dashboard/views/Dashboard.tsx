@@ -1,6 +1,6 @@
-import { Text } from "react-native";
 import React from "react";
-import YJHeader from "../../../../layout/YJHeader";
+import { Text } from "react-native";
+import YJHeader from "../../../layout/YJHeader";
 
 const Dashboard = (): JSX.Element => {
 	return (
