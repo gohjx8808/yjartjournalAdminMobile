@@ -8,3 +8,11 @@ export const formatCurrency = (value: number) => {
 
 	return dollarString.format(value);
 };
+
+export const convertUTCToMYT = (date?: Date) => {
+	if (date !== undefined) {
+		date.setTime(date.getTime() + 8 * 60 * 60 * 1000);
+	}
+
+	return date;
+};

@@ -21,6 +21,7 @@ const ControlledDatePicker = (props: ControlledDatePickerProps) => {
 		setDatePickerVisible(!datePickerVisible);
 	};
 
+	// UTC date
 	const onSelectDate = (date: Date) => {
 		onChange(date);
 		toggleDatePicker();

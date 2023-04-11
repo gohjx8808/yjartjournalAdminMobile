@@ -34,5 +34,6 @@ declare namespace yarnStock {
 		cost: number;
 		quantity: number;
 		reorderLevel: number;
+		lastOrderedDate?: Date;
 	}
 }

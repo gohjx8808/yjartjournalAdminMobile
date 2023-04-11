@@ -9,7 +9,7 @@ import Dashboard from "./dashboard/views/Dashboard";
 import routeNames from "./routeNames";
 
 export interface YarnStockNavigatorParamList {
-	[routeNames.YARN_CATEGORY]: undefined;
+	[routeNames.YARN_STOCKS]: undefined;
 	[routeNames.ADD_YARN_STOCK]: undefined;
 }
 
@@ -24,11 +24,11 @@ const YarnStockStack = createNativeStackNavigator();
 const YarnStockNavigator = (): JSX.Element => {
 	return (
 		<YarnStockStack.Navigator
-			initialRouteName={routeNames.YARN_CATEGORY}
+			initialRouteName={routeNames.YARN_STOCKS}
 			screenOptions={{ headerShown: false }}
 		>
 			<YarnStockStack.Screen
-				name={routeNames.YARN_CATEGORY}
+				name={routeNames.YARN_STOCKS}
 				component={YarnStocks}
 			/>
 			<YarnStockStack.Screen

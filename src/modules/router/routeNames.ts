@@ -1,7 +1,7 @@
 enum routeNames {
 	DASHBOARD = "Dashboard",
-	YARN_NAV = "Yarn Stocks",
-	YARN_CATEGORY = "Yarn Category",
+	YARN_NAV = "Yarn Nav",
+	YARN_STOCKS = "Yarn Stocks",
 	ADD_YARN_STOCK = "Add Yarn Stocks",
 }
 

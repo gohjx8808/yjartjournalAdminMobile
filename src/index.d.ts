@@ -6,3 +6,7 @@ interface optionData {
 interface YJResponse<T> {
 	data: T;
 }
+
+interface YJApiError {
+	message: string;
+}

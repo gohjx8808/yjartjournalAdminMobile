@@ -13,6 +13,8 @@ import {
 	useAllYarnCategories,
 	useAllYarnColorCategories,
 } from "../src/queries/yarnStockQueries";
+import { useAddYarnStock } from "../src/queries/yarnStockMutations";
+import { convertUTCToMYT } from "../../../helpers/helpers";
 
 const AddYarnStock = () => {
 	const styles = useStyles();
@@ -26,13 +28,15 @@ const AddYarnStock = () => {
 		resolver: yupResolver(AddYarnStockSchema),
 	});
 
-	console.log(errors.yarnCategory);
-
 	const { data: yarnCategories } = useAllYarnCategories();
 	const { data: yarnColorCategories } = useAllYarnColorCategories();
+	const { mutate: addYarnStock } = useAddYarnStock();
 
-	const onSubmit: SubmitHandler<yarnStock.addYarnStockPayload> = () => {
-		console.log("submit");
+	const onSubmit: SubmitHandler<yarnStock.addYarnStockPayload> = formData => {
+		addYarnStock({
+			...formData,
+			lastOrderedDate: convertUTCToMYT(formData.lastOrderedDate),
+		});
 	};
 
 	return (
@@ -85,7 +89,7 @@ const AddYarnStock = () => {
 				/>
 				<ControlledDatePicker
 					control={control}
-					name="lastOrderedAt"
+					name="lastOrderedDate"
 					title="Last Ordered Date"
 				/>
 				<Button

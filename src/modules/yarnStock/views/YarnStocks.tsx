@@ -9,9 +9,11 @@ import type { NavigationProp } from "@react-navigation/native";
 import routeNames from "../../router/routeNames";
 import type { YarnStockNavigatorParamList } from "../../router/MainRouter";
 import YJHeader from "../../../layout/YJHeader";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const YarnStocks = () => {
 	const { theme } = useTheme();
+	const insets = useSafeAreaInsets();
 	const navigation =
 		useNavigation<NavigationProp<YarnStockNavigatorParamList>>();
 
@@ -41,6 +43,7 @@ const YarnStocks = () => {
 					alignItems: "center",
 				}}
 				style={{ flexGrow: 1 }}
+				contentInset={{ bottom: insets.bottom }}
 			>
 				{yarnStock?.map(stock => (
 					<YarnStockCard stock={stock} key={stock.id} />
