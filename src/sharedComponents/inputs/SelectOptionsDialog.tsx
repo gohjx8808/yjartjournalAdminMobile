@@ -33,11 +33,12 @@ const SelectOptionsDialog = (props: SelectOptionsDialogProps) => {
 								onSelect(option);
 							}}
 							themeColor="secondary"
-							containerStyle={
+							containerStyle={[
 								selected !== undefined &&
-								selected.id === option.id &&
-								styles.selected
-							}
+									selected.id === option.id &&
+									styles.selected,
+								styles.selectionButton,
+							]}
 						/>
 					))}
 				</ListItem.Content>
@@ -64,5 +65,8 @@ const useStyles = makeStyles(theme => ({
 	},
 	selected: {
 		backgroundColor: theme.colors.primary,
+	},
+	selectionButton: {
+		width: "100%",
 	},
 }));
