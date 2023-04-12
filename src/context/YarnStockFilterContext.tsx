@@ -1,9 +1,9 @@
-import { createContext, useEffect, useState } from "react";
 import type { PropsWithChildren } from "react";
+import { createContext, useEffect, useState } from "react";
 import {
 	useAllYarnCategories,
 	useAllYarnColorCategories,
-} from "../modules/yarnStock/src/queries/yarnStockQueries";
+} from "../modules/masterData/src/queries/masterDataQueries";
 
 interface filterProps {
 	yarnCategoryIds: number[];

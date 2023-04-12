@@ -1,9 +1,10 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, makeStyles } from "@rneui/themed";
-import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { ScrollView } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { convertUTCToMYT } from "../../../helpers/helpers";
 import YJHeader from "../../../layout/YJHeader";
 import ControlledDatePicker from "../../../sharedComponents/inputs/ControlledDatePicker";
 import ControlledSelect from "../../../sharedComponents/inputs/ControlledSelect";
@@ -12,9 +13,8 @@ import AddYarnStockSchema from "../../../validationSchemas/AddYarnStockSchema";
 import {
 	useAllYarnCategories,
 	useAllYarnColorCategories,
-} from "../src/queries/yarnStockQueries";
+} from "../../masterData/src/queries/masterDataQueries";
 import { useAddYarnStock } from "../src/queries/yarnStockMutations";
-import { convertUTCToMYT } from "../../../helpers/helpers";
 
 const AddYarnStock = () => {
 	const styles = useStyles();
