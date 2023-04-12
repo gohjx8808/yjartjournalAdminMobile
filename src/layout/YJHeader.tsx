@@ -1,18 +1,32 @@
 import type { DrawerNavigationProp } from "@react-navigation/drawer";
-import { Button, Header, Icon, useTheme } from "@rneui/themed";
+import { Button, Header, Icon, makeStyles, useTheme } from "@rneui/themed";
 import React, { type FC, type PropsWithChildren } from "react";
 import YJText from "../sharedComponents/text/YJText";
 import { useNavigation } from "@react-navigation/native";
 import type { DrawerParamList } from "../modules/router/MainRouter";
+import { ScrollView } from "react-native";
+import type { ViewStyle } from "react-native";
+
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 interface YJHeaderProps {
 	title: string;
 	back?: boolean;
+	scrollViewContentCenter?: boolean;
+	customScrollViewContentContainerStyle?: ViewStyle;
 }
 
 const YJHeader: FC<PropsWithChildren & YJHeaderProps> = props => {
-	const { title, back, children } = props;
+	const {
+		title,
+		back = false,
+		children,
+		scrollViewContentCenter = false,
+		customScrollViewContentContainerStyle = {},
+	} = props;
 	const { theme } = useTheme();
+	const styles = useStyles();
+	const insets = useSafeAreaInsets();
 	const navigation = useNavigation<DrawerNavigationProp<DrawerParamList>>();
 
 	return (
@@ -21,7 +35,7 @@ const YJHeader: FC<PropsWithChildren & YJHeaderProps> = props => {
 				leftComponent={
 					<Button
 						onPress={() => {
-							if (back === true) {
+							if (back) {
 								navigation.goBack();
 							} else {
 								navigation.toggleDrawer();
@@ -29,7 +43,7 @@ const YJHeader: FC<PropsWithChildren & YJHeaderProps> = props => {
 						}}
 					>
 						<Icon
-							name={back === true ? "arrow-back-ios" : "menu"}
+							name={back ? "arrow-back-ios" : "menu"}
 							color={theme.colors.secondary}
 						/>
 					</Button>
@@ -41,9 +55,25 @@ const YJHeader: FC<PropsWithChildren & YJHeaderProps> = props => {
 				}
 				centerContainerStyle={{ justifyContent: "center" }}
 			/>
-			{children}
+			<ScrollView
+				contentContainerStyle={[
+					customScrollViewContentContainerStyle,
+					scrollViewContentCenter && styles.centerScrollviewContent,
+				]}
+				contentInsetAdjustmentBehavior="automatic"
+				contentInset={{ bottom: insets.bottom }}
+			>
+				{children}
+			</ScrollView>
 		</>
 	);
 };
 
 export default YJHeader;
+
+const useStyles = makeStyles(() => ({
+	centerScrollviewContent: {
+		justifyContent: "center",
+		alignItems: "center",
+	},
+}));

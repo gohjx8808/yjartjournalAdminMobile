@@ -1,6 +1,5 @@
 import { SpeedDial, useTheme } from "@rneui/themed";
 import React, { useState } from "react";
-import { ScrollView } from "react-native";
 import { useAllYarnStock } from "../src/queries/yarnStockQueries";
 import YarnStockCard from "./YarnStockCard";
 import YarnStockFilterDialog from "./YarnStockFilterDialog";
@@ -9,11 +8,9 @@ import type { NavigationProp } from "@react-navigation/native";
 import routeNames from "../../router/routeNames";
 import type { YarnStockNavigatorParamList } from "../../router/MainRouter";
 import YJHeader from "../../../layout/YJHeader";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const YarnStocks = () => {
 	const { theme } = useTheme();
-	const insets = useSafeAreaInsets();
 	const navigation =
 		useNavigation<NavigationProp<YarnStockNavigatorParamList>>();
 
@@ -36,19 +33,12 @@ const YarnStocks = () => {
 	};
 
 	return (
-		<YJHeader title="Yarn Stocks">
-			<ScrollView
-				contentContainerStyle={{
-					justifyContent: "center",
-					alignItems: "center",
-				}}
-				style={{ flexGrow: 1 }}
-				contentInset={{ bottom: insets.bottom }}
-			>
+		<>
+			<YJHeader title="Yarn Stocks" scrollViewContentCenter>
 				{yarnStock?.map(stock => (
 					<YarnStockCard stock={stock} key={stock.id} />
 				))}
-			</ScrollView>
+			</YJHeader>
 			<SpeedDial
 				placement="right"
 				isOpen={speedDialOpen}
@@ -78,7 +68,7 @@ const YarnStocks = () => {
 				visible={filterDialog}
 				toggleDialog={setFilterDialog}
 			/>
-		</YJHeader>
+		</>
 	);
 };
 

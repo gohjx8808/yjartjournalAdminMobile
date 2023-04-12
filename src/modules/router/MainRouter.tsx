@@ -7,15 +7,16 @@ import Dashboard from "../dashboard/views/Dashboard";
 import AddYarnStock from "../yarnStock/views/AddYarnStock";
 import YarnStocks from "../yarnStock/views/YarnStocks";
 import routeNames from "./routeNames";
+import MasterData from "../masterData/views/MasterData";
 
 export interface YarnStockNavigatorParamList {
-	[routeNames.YARN_STOCKS]: undefined;
+	[routeNames.YARN_STOCKS_DETAILS]: undefined;
 	[routeNames.ADD_YARN_STOCK]: undefined;
 }
 
 export type DrawerParamList = {
 	[routeNames.DASHBOARD]: undefined;
-	[routeNames.YARN_NAV]: undefined;
+	[routeNames.YARN_STOCKS]: undefined;
 };
 
 const Drawer = createDrawerNavigator();
@@ -24,11 +25,11 @@ const YarnStockStack = createNativeStackNavigator();
 const YarnStockNavigator = (): JSX.Element => {
 	return (
 		<YarnStockStack.Navigator
-			initialRouteName={routeNames.YARN_STOCKS}
+			initialRouteName={routeNames.YARN_STOCKS_DETAILS}
 			screenOptions={{ headerShown: false }}
 		>
 			<YarnStockStack.Screen
-				name={routeNames.YARN_STOCKS}
+				name={routeNames.YARN_STOCKS_DETAILS}
 				component={YarnStocks}
 			/>
 			<YarnStockStack.Screen
@@ -45,7 +46,7 @@ const MainRouter = (): JSX.Element => {
 	return (
 		<Drawer.Navigator
 			useLegacyImplementation={true}
-			initialRouteName={routeNames.YARN_NAV}
+			initialRouteName={routeNames.YARN_STOCKS}
 			screenOptions={{
 				headerShown: false,
 				drawerActiveTintColor: theme.colors.secondary,
@@ -54,9 +55,10 @@ const MainRouter = (): JSX.Element => {
 		>
 			<Drawer.Screen name={routeNames.DASHBOARD} component={Dashboard} />
 			<Drawer.Screen
-				name={routeNames.YARN_NAV}
+				name={routeNames.YARN_STOCKS}
 				component={YarnStockNavigator}
 			/>
+			<Drawer.Screen name={routeNames.MASTER_DATA} component={MasterData} />
 		</Drawer.Navigator>
 	);
 };
