@@ -2,6 +2,7 @@ import { Dialog, Icon, makeStyles } from "@rneui/themed";
 import YJText from "../text/YJText";
 import { useContext } from "react";
 import { StatusDialogContext } from "../../context/StatusDialogContext";
+import YJDialogButton from "./YJDialogButton";
 
 const StatusDialog = () => {
 	const { statusDialogData, closeDialog } = useContext(StatusDialogContext);
@@ -19,11 +20,7 @@ const StatusDialog = () => {
 				<Icon name="close" type="font-awesome" color="red" />
 			)}
 			<YJText style={styles.dialogMsg}>{statusDialogData.message}</YJText>
-			<Dialog.Button
-				title="Close"
-				onPress={closeDialog}
-				titleStyle={styles.buttonTitle}
-			/>
+			<YJDialogButton title="Close" onPress={closeDialog} />
 		</Dialog>
 	);
 };
@@ -31,9 +28,6 @@ const StatusDialog = () => {
 export default StatusDialog;
 
 const useStyles = makeStyles(theme => ({
-	buttonTitle: {
-		color: theme.colors.secondary,
-	},
 	dialogTitle: {
 		textAlign: "center",
 	},

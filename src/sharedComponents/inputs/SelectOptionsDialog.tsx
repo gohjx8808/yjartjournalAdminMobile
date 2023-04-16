@@ -1,5 +1,6 @@
 import { Dialog, ListItem, makeStyles } from "@rneui/themed";
 import ClearButton from "../button/ClearButton";
+import YJDialogButton from "../dialog/YJDialogButton";
 
 interface SelectOptionsDialogProps {
 	visible: boolean;
@@ -44,11 +45,7 @@ const SelectOptionsDialog = (props: SelectOptionsDialogProps) => {
 				</ListItem.Content>
 			</ListItem>
 			<Dialog.Actions>
-				<Dialog.Button
-					title="Close"
-					onPress={toggleDialog}
-					titleStyle={styles.buttonTextColor}
-				/>
+				<YJDialogButton title="Close" onPress={toggleDialog} />
 			</Dialog.Actions>
 		</Dialog>
 	);
@@ -59,9 +56,6 @@ export default SelectOptionsDialog;
 const useStyles = makeStyles(theme => ({
 	dialogTitle: {
 		textAlign: "center",
-	},
-	buttonTextColor: {
-		color: theme.colors.secondary,
 	},
 	selected: {
 		backgroundColor: theme.colors.primary,

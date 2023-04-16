@@ -1,8 +1,9 @@
-import { Dialog, useTheme } from "@rneui/themed";
+import { Dialog } from "@rneui/themed";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { View } from "react-native";
 import { YarnStockFilterContext } from "../../../context/YarnStockFilterContext";
+import YJDialogButton from "../../../sharedComponents/dialog/YJDialogButton";
 import ControlledCheckbox from "../../../sharedComponents/inputs/ControlledCheckbox";
 import YJText from "../../../sharedComponents/text/YJText";
 import {
@@ -17,7 +18,6 @@ interface YarnStockFilterDialogProps {
 
 const YarnStockFilterDialog = (props: YarnStockFilterDialogProps) => {
 	const { visible, toggleDialog } = props;
-	const { theme } = useTheme();
 
 	const { control, getValues } = useForm<yarnStock.yarnStockFilter>();
 
@@ -92,11 +92,7 @@ const YarnStockFilterDialog = (props: YarnStockFilterDialogProps) => {
 					/>
 				))}
 			</View>
-			<Dialog.Button
-				title="Close"
-				titleStyle={{ color: theme.colors.secondary }}
-				onPress={closeModal}
-			/>
+			<YJDialogButton title="Close" onPress={closeModal} />
 		</Dialog>
 	);
 };

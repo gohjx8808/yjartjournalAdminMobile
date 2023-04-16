@@ -8,77 +8,109 @@ import {
 	useAllYarnColorCategories,
 } from "../src/queries/masterDataQueries";
 import MasterDataListItem from "./MasterDataListItem";
+import AddEditMasterDataDialog from "./AddEditMasterDataDialog";
 
 const MasterData = () => {
 	const [yarnCategoryExpand, setYarnCategoryExpand] = useState(true);
 	const [yarnColorCategoryExpand, setYarnColorCategoryExpand] = useState(true);
+	const [addEditDialogOpen, setAddEditDialogOpen] = useState(false);
+	const [addEditDialogData, setAddEditDialogData] =
+		useState<masterData.addEditDialogData>({
+			title: "",
+			onSubmit: () => {},
+		});
 	const styles = useStyles();
 
 	const { data: yarnCategories } = useAllYarnCategories();
 	const { data: yarnColorCategories } = useAllYarnColorCategories();
 
+	const toggleYarnCategoryExpand = () => {
+		setYarnCategoryExpand(!yarnCategoryExpand);
+	};
+
+	const toggleYarnColorCategoryExpand = () => {
+		setYarnColorCategoryExpand(!yarnColorCategoryExpand);
+	};
+
+	const toggleAddEditDialogOpen = () => {
+		setAddEditDialogOpen(!addEditDialogOpen);
+	};
+
+	const onYarnCategoryEdit = (data: optionData) => {
+		setAddEditDialogData({
+			title: "Edit Yarn Category",
+			onSubmit: () => {
+				console.log(data);
+			},
+		});
+		toggleAddEditDialogOpen();
+	};
+
 	return (
-		<YJHeader title="Master Data">
-			<View style={styles.parentContainer}>
-				<ListItem.Accordion
-					containerStyle={styles.accordionContainer}
-					content={
-						<ListItem.Content>
-							<ListItem.Title>
-								<YJText bold>Yarn Categories</YJText>
-							</ListItem.Title>
-						</ListItem.Content>
-					}
-					isExpanded={yarnCategoryExpand}
-					onPress={() => {
-						setYarnCategoryExpand(!yarnCategoryExpand);
-					}}
-				>
-					{yarnCategories?.map(category => (
-						<MasterDataListItem
-							key={category.id}
-							item={category}
-							onEdit={() => {
-								console.log(category);
-							}}
-							onDelete={() => {
-								console.log(category);
-							}}
-						/>
-					))}
-				</ListItem.Accordion>
-				<ListItem.Accordion
-					containerStyle={[
-						styles.accordionContainer,
-						styles.notFirstAccordionContainer,
-					]}
-					content={
-						<ListItem.Content>
-							<ListItem.Title>
-								<YJText bold>Yarn Color Categories</YJText>
-							</ListItem.Title>
-						</ListItem.Content>
-					}
-					isExpanded={yarnColorCategoryExpand}
-					onPress={() => {
-						setYarnColorCategoryExpand(!yarnColorCategoryExpand);
-					}}
-				>
-					{yarnColorCategories?.map(colorCategory => (
-						<MasterDataListItem
-							key={colorCategory.id}
-							item={colorCategory}
-							onEdit={() => {
-								console.log(colorCategory);
-							}}
-							onDelete={() => {
-								console.log(colorCategory);
-							}}
-						/>
-					))}
-				</ListItem.Accordion>
-			</View>
-		</YJHeader>
+		<>
+			<YJHeader title="Master Data">
+				<View style={styles.parentContainer}>
+					<ListItem.Accordion
+						containerStyle={styles.accordionContainer}
+						content={
+							<ListItem.Content>
+								<ListItem.Title>
+									<YJText bold>Yarn Categories</YJText>
+								</ListItem.Title>
+							</ListItem.Content>
+						}
+						isExpanded={yarnCategoryExpand}
+						onPress={toggleYarnCategoryExpand}
+					>
+						{yarnCategories?.map(category => (
+							<MasterDataListItem
+								key={category.id}
+								item={category}
+								onEdit={() => {
+									onYarnCategoryEdit(category);
+								}}
+								onDelete={() => {
+									console.log(category);
+								}}
+							/>
+						))}
+					</ListItem.Accordion>
+					<ListItem.Accordion
+						containerStyle={[
+							styles.accordionContainer,
+							styles.notFirstAccordionContainer,
+						]}
+						content={
+							<ListItem.Content>
+								<ListItem.Title>
+									<YJText bold>Yarn Color Categories</YJText>
+								</ListItem.Title>
+							</ListItem.Content>
+						}
+						isExpanded={yarnColorCategoryExpand}
+						onPress={toggleYarnColorCategoryExpand}
+					>
+						{yarnColorCategories?.map(colorCategory => (
+							<MasterDataListItem
+								key={colorCategory.id}
+								item={colorCategory}
+								onEdit={() => {
+									console.log(colorCategory);
+								}}
+								onDelete={() => {
+									console.log(colorCategory);
+								}}
+							/>
+						))}
+					</ListItem.Accordion>
+				</View>
+			</YJHeader>
+			<AddEditMasterDataDialog
+				hideDialog={toggleAddEditDialogOpen}
+				visible={addEditDialogOpen}
+				dialogData={addEditDialogData}
+			/>
+		</>
 	);
 };
 
