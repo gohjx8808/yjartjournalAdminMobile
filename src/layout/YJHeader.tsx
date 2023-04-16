@@ -1,11 +1,11 @@
 import type { DrawerNavigationProp } from "@react-navigation/drawer";
+import { useNavigation } from "@react-navigation/native";
 import { Button, Header, Icon, makeStyles, useTheme } from "@rneui/themed";
 import React, { type FC, type PropsWithChildren } from "react";
-import YJText from "../sharedComponents/text/YJText";
-import { useNavigation } from "@react-navigation/native";
-import type { DrawerParamList } from "../modules/router/MainRouter";
-import { ScrollView } from "react-native";
 import type { ViewStyle } from "react-native";
+import { ScrollView } from "react-native";
+import type { DrawerParamList } from "../modules/router/MainRouter";
+import YJText from "../sharedComponents/text/YJText";
 
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
