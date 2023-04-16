@@ -1,12 +1,13 @@
 import { ListItem, makeStyles } from "@rneui/themed";
-import YJHeader from "../../../layout/YJHeader";
 import { useState } from "react";
+import { View } from "react-native";
+import YJHeader from "../../../layout/YJHeader";
+import YJText from "../../../sharedComponents/text/YJText";
 import {
 	useAllYarnCategories,
 	useAllYarnColorCategories,
 } from "../src/queries/masterDataQueries";
-import { View } from "react-native";
-import YJText from "../../../sharedComponents/text/YJText";
+import MasterDataListItem from "./MasterDataListItem";
 
 const MasterData = () => {
 	const [yarnCategoryExpand, setYarnCategoryExpand] = useState(true);
@@ -34,11 +35,16 @@ const MasterData = () => {
 					}}
 				>
 					{yarnCategories?.map(category => (
-						<ListItem key={category.id}>
-							<ListItem.Content>
-								<ListItem.Title>{category.name}</ListItem.Title>
-							</ListItem.Content>
-						</ListItem>
+						<MasterDataListItem
+							key={category.id}
+							item={category}
+							onEdit={() => {
+								console.log(category);
+							}}
+							onDelete={() => {
+								console.log(category);
+							}}
+						/>
 					))}
 				</ListItem.Accordion>
 				<ListItem.Accordion
@@ -59,11 +65,16 @@ const MasterData = () => {
 					}}
 				>
 					{yarnColorCategories?.map(colorCategory => (
-						<ListItem key={colorCategory.id}>
-							<ListItem.Content>
-								<ListItem.Title>{colorCategory.name}</ListItem.Title>
-							</ListItem.Content>
-						</ListItem>
+						<MasterDataListItem
+							key={colorCategory.id}
+							item={colorCategory}
+							onEdit={() => {
+								console.log(colorCategory);
+							}}
+							onDelete={() => {
+								console.log(colorCategory);
+							}}
+						/>
 					))}
 				</ListItem.Accordion>
 			</View>
