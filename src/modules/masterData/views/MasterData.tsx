@@ -36,20 +36,12 @@ const MasterData = () => {
 		setAddEditDialogOpen(!addEditDialogOpen);
 	};
 
-	const onYarnCategoryEdit = (data: optionData) => {
+	const onEdit = (
+		data: optionData,
+		type: "Yarn Category" | "Yarn Color Category",
+	) => {
 		setAddEditDialogData({
-			title: "Edit Yarn Category",
-			data,
-			onSubmit: () => {
-				console.log(data);
-			},
-		});
-		toggleAddEditDialogOpen();
-	};
-
-	const onYarnColorCategoryEdit = (data: optionData) => {
-		setAddEditDialogData({
-			title: "Edit Yarn Color Category",
+			title: `Edit ${type}`,
 			data,
 			onSubmit: () => {
 				console.log(data);
@@ -79,7 +71,7 @@ const MasterData = () => {
 								key={category.id}
 								item={category}
 								onEdit={() => {
-									onYarnCategoryEdit(category);
+									onEdit(category, "Yarn Category");
 								}}
 								onDelete={() => {
 									console.log(category);
@@ -107,7 +99,7 @@ const MasterData = () => {
 								key={colorCategory.id}
 								item={colorCategory}
 								onEdit={() => {
-									onYarnColorCategoryEdit(colorCategory);
+									onEdit(colorCategory, "Yarn Color Category");
 								}}
 								onDelete={() => {
 									console.log(colorCategory);
