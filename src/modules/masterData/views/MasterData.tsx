@@ -39,6 +39,18 @@ const MasterData = () => {
 	const onYarnCategoryEdit = (data: optionData) => {
 		setAddEditDialogData({
 			title: "Edit Yarn Category",
+			data,
+			onSubmit: () => {
+				console.log(data);
+			},
+		});
+		toggleAddEditDialogOpen();
+	};
+
+	const onYarnColorCategoryEdit = (data: optionData) => {
+		setAddEditDialogData({
+			title: "Edit Yarn Color Category",
+			data,
 			onSubmit: () => {
 				console.log(data);
 			},
@@ -95,7 +107,7 @@ const MasterData = () => {
 								key={colorCategory.id}
 								item={colorCategory}
 								onEdit={() => {
-									console.log(colorCategory);
+									onYarnColorCategoryEdit(colorCategory);
 								}}
 								onDelete={() => {
 									console.log(colorCategory);
