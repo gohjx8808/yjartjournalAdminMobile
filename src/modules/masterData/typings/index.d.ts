@@ -1,7 +1,7 @@
 declare namespace masterData {
 	interface addEditDialogData {
-		title: string;
-		onSubmit: () => void;
+		type: masterDataType;
+		actionType: "Add" | "Edit";
 		data?: optionData;
 	}
 
@@ -12,4 +12,14 @@ declare namespace masterData {
 		onSubmit: () => void;
 		data: optionData;
 	}
+
+	interface addMasterDataPayload {
+		name: string;
+	}
+
+	interface deleteMasterDataPayload {
+		id: number;
+	}
+
+	type updateMasterDataPayload = addMasterDataPayload & deleteMasterDataPayload;
 }

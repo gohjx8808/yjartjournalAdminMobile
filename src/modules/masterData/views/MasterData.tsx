@@ -39,11 +39,9 @@ const MasterData = () => {
 
 	const onEdit = (data: optionData, type: masterData.masterDataType) => {
 		setAddEditDialogData({
-			title: `Edit ${type}`,
+			actionType: "Edit",
+			type,
 			data,
-			onSubmit: () => {
-				console.log(data);
-			},
 		});
 		toggleAddEditDialogOpen();
 	};
