@@ -9,16 +9,17 @@ import {
 } from "../src/queries/masterDataQueries";
 import MasterDataListItem from "./MasterDataListItem";
 import AddEditMasterDataDialog from "./AddEditMasterDataDialog";
+import DeleteMasterDataDialog from "./DeleteMasterDataDialog";
 
 const MasterData = () => {
 	const [yarnCategoryExpand, setYarnCategoryExpand] = useState(true);
 	const [yarnColorCategoryExpand, setYarnColorCategoryExpand] = useState(true);
 	const [addEditDialogOpen, setAddEditDialogOpen] = useState(false);
 	const [addEditDialogData, setAddEditDialogData] =
-		useState<masterData.addEditDialogData>({
-			title: "",
-			onSubmit: () => {},
-		});
+		useState<masterData.addEditDialogData | null>(null);
+	const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+	const [deleteDialogData, setDeleteDialogData] =
+		useState<masterData.deleteDialogData | null>(null);
 	const styles = useStyles();
 
 	const { data: yarnCategories } = useAllYarnCategories();
@@ -36,10 +37,7 @@ const MasterData = () => {
 		setAddEditDialogOpen(!addEditDialogOpen);
 	};
 
-	const onEdit = (
-		data: optionData,
-		type: "Yarn Category" | "Yarn Color Category",
-	) => {
+	const onEdit = (data: optionData, type: masterData.masterDataType) => {
 		setAddEditDialogData({
 			title: `Edit ${type}`,
 			data,
@@ -48,6 +46,21 @@ const MasterData = () => {
 			},
 		});
 		toggleAddEditDialogOpen();
+	};
+
+	const toggleDeleteDialogOpen = () => {
+		setDeleteDialogOpen(!deleteDialogOpen);
+	};
+
+	const onDelete = (data: optionData, type: masterData.masterDataType) => {
+		setDeleteDialogData({
+			type,
+			data,
+			onSubmit: () => {
+				console.log(data);
+			},
+		});
+		toggleDeleteDialogOpen();
 	};
 
 	return (
@@ -74,7 +87,7 @@ const MasterData = () => {
 									onEdit(category, "Yarn Category");
 								}}
 								onDelete={() => {
-									console.log(category);
+									onDelete(category, "Yarn Category");
 								}}
 							/>
 						))}
@@ -102,18 +115,27 @@ const MasterData = () => {
 									onEdit(colorCategory, "Yarn Color Category");
 								}}
 								onDelete={() => {
-									console.log(colorCategory);
+									onDelete(colorCategory, "Yarn Color Category");
 								}}
 							/>
 						))}
 					</ListItem.Accordion>
 				</View>
 			</YJHeader>
-			<AddEditMasterDataDialog
-				hideDialog={toggleAddEditDialogOpen}
-				visible={addEditDialogOpen}
-				dialogData={addEditDialogData}
-			/>
+			{addEditDialogData !== null && (
+				<AddEditMasterDataDialog
+					hideDialog={toggleAddEditDialogOpen}
+					visible={addEditDialogOpen}
+					dialogData={addEditDialogData}
+				/>
+			)}
+			{deleteDialogData !== null && (
+				<DeleteMasterDataDialog
+					hideDialog={toggleDeleteDialogOpen}
+					visible={deleteDialogOpen}
+					dialogData={deleteDialogData}
+				/>
+			)}
 		</>
 	);
 };

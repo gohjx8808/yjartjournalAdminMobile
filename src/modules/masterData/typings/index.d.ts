@@ -4,4 +4,12 @@ declare namespace masterData {
 		onSubmit: () => void;
 		data?: optionData;
 	}
+
+	type masterDataType = "Yarn Category" | "Yarn Color Category";
+
+	interface deleteDialogData {
+		type: masterDataType;
+		onSubmit: () => void;
+		data: optionData;
+	}
 }
