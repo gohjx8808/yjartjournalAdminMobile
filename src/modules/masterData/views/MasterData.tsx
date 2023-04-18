@@ -54,9 +54,6 @@ const MasterData = () => {
 		setDeleteDialogData({
 			type,
 			data,
-			onSubmit: () => {
-				console.log(data);
-			},
 		});
 		toggleDeleteDialogOpen();
 	};

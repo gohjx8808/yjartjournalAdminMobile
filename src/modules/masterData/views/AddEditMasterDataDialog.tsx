@@ -29,15 +29,14 @@ const AddEditMasterDataDialog = (props: AddEditMasterDataDialogProps) => {
 	}, [visible]);
 
 	const onSubmit = (formData: masterData.addMasterDataPayload) => {
+		hideDialog();
 		if (dialogData.actionType === "Edit") {
 			if (dialogData.type === "Yarn Category") {
-				hideDialog();
 				submitUpdateYarnCategory({
 					id: dialogData.data?.id ?? 0,
 					name: formData.name,
 				});
 			} else {
-				hideDialog();
 				submitUpdateYarnColorCategory({
 					id: dialogData.data?.id ?? 0,
 					name: formData.name,

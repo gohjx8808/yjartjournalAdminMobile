@@ -9,7 +9,6 @@ declare namespace masterData {
 
 	interface deleteDialogData {
 		type: masterDataType;
-		onSubmit: () => void;
 		data: optionData;
 	}
 
