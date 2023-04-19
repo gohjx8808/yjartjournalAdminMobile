@@ -1,4 +1,4 @@
-import { ListItem, makeStyles } from "@rneui/themed";
+import { Button, Icon, ListItem, makeStyles, useTheme } from "@rneui/themed";
 import { useState } from "react";
 import { View } from "react-native";
 import YJHeader from "../../../layout/YJHeader";
@@ -21,6 +21,7 @@ const MasterData = () => {
 	const [deleteDialogData, setDeleteDialogData] =
 		useState<masterData.deleteDialogData | null>(null);
 	const styles = useStyles();
+	const { theme } = useTheme();
 
 	const { data: yarnCategories } = useAllYarnCategories();
 	const { data: yarnColorCategories } = useAllYarnColorCategories();
@@ -60,7 +61,14 @@ const MasterData = () => {
 
 	return (
 		<>
-			<YJHeader title="Master Data">
+			<YJHeader
+				title="Master Data"
+				rightComponent={
+					<Button onPress={() => {}}>
+						<Icon name="add" color={theme.colors.secondary} />
+					</Button>
+				}
+			>
 				<View style={styles.parentContainer}>
 					<ListItem.Accordion
 						containerStyle={styles.accordionContainer}

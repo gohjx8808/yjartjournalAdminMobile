@@ -1,6 +1,7 @@
 import type { DrawerNavigationProp } from "@react-navigation/drawer";
 import { useNavigation } from "@react-navigation/native";
 import { Button, Header, Icon, makeStyles, useTheme } from "@rneui/themed";
+import type { HeaderProps } from "@rneui/themed";
 import React, { type FC, type PropsWithChildren } from "react";
 import type { ViewStyle } from "react-native";
 import { ScrollView } from "react-native";
@@ -9,7 +10,11 @@ import YJText from "../sharedComponents/text/YJText";
 
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-interface YJHeaderProps {
+interface YJHeaderProps
+	extends Omit<
+		HeaderProps,
+		"leftComponent" | "centerComponent" | "centerContainerStyle"
+	> {
 	title: string;
 	back?: boolean;
 	scrollViewContentCenter?: boolean;
@@ -23,6 +28,7 @@ const YJHeader: FC<PropsWithChildren & YJHeaderProps> = props => {
 		children,
 		scrollViewContentCenter = false,
 		customScrollViewContentContainerStyle = {},
+		...rest
 	} = props;
 	const { theme } = useTheme();
 	const styles = useStyles();
@@ -32,6 +38,7 @@ const YJHeader: FC<PropsWithChildren & YJHeaderProps> = props => {
 	return (
 		<>
 			<Header
+				{...rest}
 				leftComponent={
 					<Button
 						onPress={() => {
