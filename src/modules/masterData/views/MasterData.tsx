@@ -67,6 +67,14 @@ const MasterData = () => {
 		setMasterDataCategoryDialogOpen(!masterDataCategoryDialogOpen);
 	};
 
+	const onAdd = (type: masterData.masterDataType) => {
+		setAddEditDialogData({
+			actionType: "Add",
+			type,
+		});
+		toggleAddEditDialogOpen();
+	};
+
 	return (
 		<>
 			<YJHeader
@@ -150,6 +158,7 @@ const MasterData = () => {
 			<MasterDataCategoryDialog
 				visible={masterDataCategoryDialogOpen}
 				hideDialog={toggleMasterDataCategoryDialogOpen}
+				onAdd={onAdd}
 			/>
 		</>
 	);

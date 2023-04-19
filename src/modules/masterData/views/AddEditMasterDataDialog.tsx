@@ -4,6 +4,8 @@ import ControlledTextInput from "../../../sharedComponents/inputs/ControlledText
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import {
+	useAddYarnCategory,
+	useAddYarnColorCategory,
 	useUpdateYarnCategory,
 	useUpdateYarnColorCategory,
 } from "../src/queries/masterDataMutations";
@@ -18,6 +20,8 @@ const AddEditMasterDataDialog = (props: AddEditMasterDataDialogProps) => {
 	const { control, setValue, handleSubmit } =
 		useForm<masterData.addMasterDataPayload>();
 
+	const { mutate: submitAddYarnCategory } = useAddYarnCategory();
+	const { mutate: submitAddYarnColorCategory } = useAddYarnColorCategory();
 	const { mutate: submitUpdateYarnCategory } = useUpdateYarnCategory();
 	const { mutate: submitUpdateYarnColorCategory } =
 		useUpdateYarnColorCategory();
@@ -37,6 +41,16 @@ const AddEditMasterDataDialog = (props: AddEditMasterDataDialogProps) => {
 			} else {
 				submitUpdateYarnColorCategory({
 					id: dialogData.data?.id ?? 0,
+					name: formData.name,
+				});
+			}
+		} else {
+			if (dialogData.type === "Yarn Category") {
+				submitAddYarnCategory({
+					name: formData.name,
+				});
+			} else {
+				submitAddYarnColorCategory({
 					name: formData.name,
 				});
 			}

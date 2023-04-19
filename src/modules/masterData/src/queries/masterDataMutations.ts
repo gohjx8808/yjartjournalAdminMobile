@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import {
+	postAddYarnCategory,
 	postDeleteYarnCategory,
 	postUpdateYarnCategory,
 } from "../apis/yarnCategoryApis";
@@ -11,9 +12,76 @@ import {
 } from "./masterDataQueries";
 import type { AxiosError } from "axios";
 import {
+	postAddYarnColorCategory,
 	postDeleteYarnColorCategory,
 	postUpdateYarnColorCategory,
 } from "../apis/yarnColorCategoryApi";
+
+export const useAddYarnCategory = () => {
+	const { statusDialogData, setStatusDialogData } =
+		useContext(StatusDialogContext);
+	const { refetch } = useAllYarnCategories();
+
+	return useMutation(["addYarnCategory"], postAddYarnCategory, {
+		onSuccess: async () => {
+			await refetch();
+			setStatusDialogData({
+				...statusDialogData,
+				isSuccess: true,
+				message: "The yarn category had been added!",
+			});
+		},
+		onError: (err: AxiosError<YJApiError>) => {
+			setStatusDialogData({
+				...statusDialogData,
+				isSuccess: false,
+				message:
+					err.response?.data.message ??
+					"The yarn category had failed to add. Please try again later.",
+			});
+		},
+		onSettled: () => {
+			setStatusDialogData({
+				...statusDialogData,
+				visible: true,
+				title: "Add Yarn Category",
+			});
+		},
+	});
+};
+
+export const useAddYarnColorCategory = () => {
+	const { statusDialogData, setStatusDialogData } =
+		useContext(StatusDialogContext);
+	const { refetch } = useAllYarnColorCategories();
+
+	return useMutation(["addYarnColorCategory"], postAddYarnColorCategory, {
+		onSuccess: async () => {
+			await refetch();
+			setStatusDialogData({
+				...statusDialogData,
+				isSuccess: true,
+				message: "The yarn color category had been added!",
+			});
+		},
+		onError: (err: AxiosError<YJApiError>) => {
+			setStatusDialogData({
+				...statusDialogData,
+				isSuccess: false,
+				message:
+					err.response?.data.message ??
+					"The yarn color category had failed to add. Please try again later.",
+			});
+		},
+		onSettled: () => {
+			setStatusDialogData({
+				...statusDialogData,
+				visible: true,
+				title: "aDD Yarn Color Category",
+			});
+		},
+	});
+};
 
 export const useUpdateYarnCategory = () => {
 	const { statusDialogData, setStatusDialogData } =
