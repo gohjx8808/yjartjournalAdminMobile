@@ -19,8 +19,8 @@ const YarnStocks = () => {
 
 	const { data: yarnStock } = useAllYarnStock();
 
-	const openFilterDialog = () => {
-		setFilterDialog(true);
+	const toggleFilterDialog = () => {
+		setFilterDialog(!filterDialog);
 	};
 
 	const toggleSpeedDial = () => {
@@ -53,7 +53,7 @@ const YarnStocks = () => {
 						color: theme.colors.primary,
 					}}
 					title="Filter"
-					onPress={openFilterDialog}
+					onPress={toggleFilterDialog}
 				/>
 				<SpeedDial.Action
 					icon={{
@@ -66,7 +66,7 @@ const YarnStocks = () => {
 			</SpeedDial>
 			<YarnStockFilterDialog
 				visible={filterDialog}
-				toggleDialog={setFilterDialog}
+				hideDialog={toggleFilterDialog}
 			/>
 		</>
 	);

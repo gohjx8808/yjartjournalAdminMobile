@@ -6,9 +6,7 @@ import {
 	useDeleteYarnColorCategory,
 } from "../src/queries/masterDataMutations";
 
-interface DeleteMasterDataDialogProps {
-	visible: boolean;
-	hideDialog: () => void;
+interface DeleteMasterDataDialogProps extends dialogProps.commonDialogProps {
 	dialogData: masterData.deleteDialogData;
 }
 

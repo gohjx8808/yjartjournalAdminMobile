@@ -39,7 +39,7 @@ const ControlledSelect = (props: ControlledSelectProps) => {
 				themeColor="secondary"
 			/>
 			<SelectOptionsDialog
-				toggleDialog={toggleDialog}
+				hideDialog={toggleDialog}
 				visible={selectDialogOpen}
 				title={title as string}
 				options={options}

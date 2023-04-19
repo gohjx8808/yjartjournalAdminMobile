@@ -11,19 +11,10 @@ import {
 	useAllYarnColorCategories,
 } from "../../masterData/src/queries/masterDataQueries";
 
-interface YarnStockFilterDialogProps {
-	visible: boolean;
-	toggleDialog: (value: boolean) => void;
-}
-
-const YarnStockFilterDialog = (props: YarnStockFilterDialogProps) => {
-	const { visible, toggleDialog } = props;
+const YarnStockFilterDialog = (props: dialogProps.commonDialogProps) => {
+	const { visible, hideDialog } = props;
 
 	const { control, getValues } = useForm<yarnStock.yarnStockFilter>();
-
-	const closeModal = () => {
-		toggleDialog(false);
-	};
 
 	const { data: yarnCategories } = useAllYarnCategories();
 	const { data: yarnColorCategories } = useAllYarnColorCategories();
@@ -54,7 +45,7 @@ const YarnStockFilterDialog = (props: YarnStockFilterDialogProps) => {
 	};
 
 	return (
-		<Dialog isVisible={visible} onBackdropPress={closeModal}>
+		<Dialog isVisible={visible} onBackdropPress={hideDialog}>
 			<Dialog.Title title="Filter Yarn Stock" />
 			<YJText bold>Yarn Category</YJText>
 			<View>
@@ -92,7 +83,7 @@ const YarnStockFilterDialog = (props: YarnStockFilterDialogProps) => {
 					/>
 				))}
 			</View>
-			<YJDialogButton title="Close" onPress={closeModal} />
+			<YJDialogButton title="Close" onPress={hideDialog} />
 		</Dialog>
 	);
 };

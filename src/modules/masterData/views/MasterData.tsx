@@ -10,6 +10,7 @@ import {
 import MasterDataListItem from "./MasterDataListItem";
 import AddEditMasterDataDialog from "./AddEditMasterDataDialog";
 import DeleteMasterDataDialog from "./DeleteMasterDataDialog";
+import MasterDataCategoryDialog from "./MasterDataCategoryDialog";
 
 const MasterData = () => {
 	const [yarnCategoryExpand, setYarnCategoryExpand] = useState(true);
@@ -20,6 +21,9 @@ const MasterData = () => {
 	const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
 	const [deleteDialogData, setDeleteDialogData] =
 		useState<masterData.deleteDialogData | null>(null);
+	const [masterDataCategoryDialogOpen, setMasterDataCategoryDialogOpen] =
+		useState(false);
+
 	const styles = useStyles();
 	const { theme } = useTheme();
 
@@ -59,12 +63,16 @@ const MasterData = () => {
 		toggleDeleteDialogOpen();
 	};
 
+	const toggleMasterDataCategoryDialogOpen = () => {
+		setMasterDataCategoryDialogOpen(!masterDataCategoryDialogOpen);
+	};
+
 	return (
 		<>
 			<YJHeader
 				title="Master Data"
 				rightComponent={
-					<Button onPress={() => {}}>
+					<Button onPress={toggleMasterDataCategoryDialogOpen}>
 						<Icon name="add" color={theme.colors.secondary} />
 					</Button>
 				}
@@ -139,6 +147,10 @@ const MasterData = () => {
 					dialogData={deleteDialogData}
 				/>
 			)}
+			<MasterDataCategoryDialog
+				visible={masterDataCategoryDialogOpen}
+				hideDialog={toggleMasterDataCategoryDialogOpen}
+			/>
 		</>
 	);
 };

@@ -2,9 +2,7 @@ import { Dialog, ListItem, makeStyles } from "@rneui/themed";
 import ClearButton from "../button/ClearButton";
 import YJDialogButton from "../dialog/YJDialogButton";
 
-interface SelectOptionsDialogProps {
-	visible: boolean;
-	toggleDialog: () => void;
+interface SelectOptionsDialogProps extends dialogProps.commonDialogProps {
 	title?: string;
 	options: optionData[];
 	onChange: (selected: optionData) => void;
@@ -14,15 +12,15 @@ interface SelectOptionsDialogProps {
 const SelectOptionsDialog = (props: SelectOptionsDialogProps) => {
 	const styles = useStyles(props);
 
-	const { title, toggleDialog, visible, options, onChange, selected } = props;
+	const { title, hideDialog, visible, options, onChange, selected } = props;
 
 	const onSelect = (selected: optionData) => {
 		onChange(selected);
-		toggleDialog();
+		hideDialog();
 	};
 
 	return (
-		<Dialog isVisible={visible} onBackdropPress={toggleDialog}>
+		<Dialog isVisible={visible} onBackdropPress={hideDialog}>
 			<Dialog.Title title={title} titleStyle={styles.dialogTitle} />
 			<ListItem>
 				<ListItem.Content>
@@ -45,7 +43,7 @@ const SelectOptionsDialog = (props: SelectOptionsDialogProps) => {
 				</ListItem.Content>
 			</ListItem>
 			<Dialog.Actions>
-				<YJDialogButton title="Close" onPress={toggleDialog} />
+				<YJDialogButton title="Close" onPress={hideDialog} />
 			</Dialog.Actions>
 		</Dialog>
 	);

@@ -8,9 +8,7 @@ import {
 	useUpdateYarnColorCategory,
 } from "../src/queries/masterDataMutations";
 
-interface AddEditMasterDataDialogProps {
-	visible: boolean;
-	hideDialog: () => void;
+interface AddEditMasterDataDialogProps extends dialogProps.commonDialogProps {
 	dialogData: masterData.addEditDialogData;
 }
 
