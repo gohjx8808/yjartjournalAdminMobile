@@ -41,7 +41,7 @@ export const useAddYarnStock = () => {
 	return useMutation(["addYarnStock"], postAddYarnStock, {
 		onSuccess: async () => {
 			await refetch();
-			navigation.navigate(routeNames.YARN_STOCKS);
+			navigation.navigate(routeNames.YARN_STOCKS_DETAILS);
 			setStatusDialogData({
 				title: "Add Yarn Stock",
 				message: "The yarn stock had been added!",
