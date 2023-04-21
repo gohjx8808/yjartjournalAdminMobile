@@ -46,7 +46,7 @@ const MainRouter = (): JSX.Element => {
 	return (
 		<Drawer.Navigator
 			useLegacyImplementation={true}
-			initialRouteName={routeNames.MASTER_DATA}
+			initialRouteName={routeNames.YARN_STOCKS}
 			screenOptions={{
 				headerShown: false,
 				drawerActiveTintColor: theme.colors.secondary,
