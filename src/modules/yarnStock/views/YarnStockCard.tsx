@@ -1,4 +1,4 @@
-import { Card, makeStyles } from "@rneui/themed";
+import { Card, Icon, makeStyles } from "@rneui/themed";
 import { View } from "react-native";
 import { formatCurrency } from "../../../helpers/helpers";
 import ClearButton from "../../../sharedComponents/button/ClearButton";
@@ -8,10 +8,11 @@ import { useUpdateYarnStockQuantity } from "../src/queries/yarnStockMutations";
 
 interface YarnStockCardProps {
 	stock: yarnStock.yarnStockData;
+	onDelete: (selected: yarnStock.yarnStockData) => void;
 }
 
 const YarnStockCard = (props: YarnStockCardProps) => {
-	const { stock } = props;
+	const { stock, onDelete } = props;
 	const styles = useStyles();
 
 	const { mutate } = useUpdateYarnStockQuantity();
@@ -22,7 +23,18 @@ const YarnStockCard = (props: YarnStockCardProps) => {
 
 	return (
 		<Card containerStyle={{ width: "80%" }} key={stock.id}>
-			<Card.Title>{stock.detailedColor}</Card.Title>
+			<View style={styles.cardHeaderContainer}>
+				<Card.Title>{stock.detailedColor}</Card.Title>
+				<ClearButton
+					containerStyle={styles.deleteBtnContainer}
+					style={styles.deleteBtn}
+					onPress={() => {
+						onDelete(stock);
+					}}
+				>
+					<Icon name="close" />
+				</ClearButton>
+			</View>
 			<Card.Divider />
 			<SpaceBetweenText
 				frontText="Cost per Item"
@@ -93,5 +105,17 @@ const useStyles = makeStyles(theme => ({
 	},
 	stockTitle: {
 		marginVertical: 3,
+	},
+	cardHeaderContainer: {
+		flexDirection: "row",
+		justifyContent: "center",
+		alignItems: "center",
+	},
+	deleteBtnContainer: {
+		right: 0,
+		position: "absolute",
+	},
+	deleteBtn: {
+		marginBottom: 15,
 	},
 }));
