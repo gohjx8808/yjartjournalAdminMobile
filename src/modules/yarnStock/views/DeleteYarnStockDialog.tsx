@@ -1,6 +1,7 @@
 import { Dialog } from "@rneui/themed";
 import YJDialogButton from "../../../sharedComponents/dialog/YJDialogButton";
 import YJText from "../../../sharedComponents/text/YJText";
+import { useDeleteYarnStock } from "../src/queries/yarnStockMutations";
 
 interface DeleteYarnStockDialogProps extends dialogProps.commonDialogProps {
 	stock: yarnStock.yarnStockData;
@@ -8,6 +9,13 @@ interface DeleteYarnStockDialogProps extends dialogProps.commonDialogProps {
 
 const DeleteYarnStockDialog = (props: DeleteYarnStockDialogProps) => {
 	const { visible, hideDialog, stock } = props;
+
+	const { mutate: submitDelete } = useDeleteYarnStock();
+
+	const onSubmitDelete = () => {
+		hideDialog();
+		submitDelete({ yarnId: stock.id });
+	};
 
 	return (
 		<Dialog isVisible={visible} onBackdropPress={hideDialog}>
@@ -19,7 +27,7 @@ const DeleteYarnStockDialog = (props: DeleteYarnStockDialogProps) => {
 			</YJText>
 			<YJText>This cannot be undone!</YJText>
 			<Dialog.Actions>
-				<YJDialogButton title="Confirm" />
+				<YJDialogButton title="Confirm" onPress={onSubmitDelete} />
 				<YJDialogButton title="Cancel" onPress={hideDialog} />
 			</Dialog.Actions>
 		</Dialog>

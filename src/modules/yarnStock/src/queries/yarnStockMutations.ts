@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import {
 	postAddYarnStock,
+	postDeleteYarnStock,
 	postUpdateYarnStockQuantity,
 } from "../apis/yarnStockApis";
 import { useContext } from "react";
@@ -54,6 +55,32 @@ export const useAddYarnStock = () => {
 				title: "Add Yarn Stock",
 				message:
 					err.response?.data.message ?? "The yarn stock had failed to add!",
+				isSuccess: false,
+				visible: true,
+			});
+		},
+	});
+};
+
+export const useDeleteYarnStock = () => {
+	const { setStatusDialogData } = useContext(StatusDialogContext);
+	const { refetch } = useAllYarnStock();
+
+	return useMutation(["deleteYarnStock"], postDeleteYarnStock, {
+		onSuccess: async () => {
+			await refetch();
+			setStatusDialogData({
+				title: "Delete Yarn Stock",
+				message: "The yarn stock had been deleted!",
+				isSuccess: true,
+				visible: true,
+			});
+		},
+		onError: (err: AxiosError<YJApiError>) => {
+			setStatusDialogData({
+				title: "Delete Yarn Stock",
+				message:
+					err.response?.data.message ?? "The yarn stock had failed to delete!",
 				isSuccess: false,
 				visible: true,
 			});

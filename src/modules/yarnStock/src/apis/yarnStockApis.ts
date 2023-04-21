@@ -12,3 +12,7 @@ export const postUpdateYarnStockQuantity = async (
 export const postAddYarnStock = async (
 	payload: yarnStock.addYarnStockPayload,
 ) => await postRequest("/stocks/add-new", payload);
+
+export const postDeleteYarnStock = async (
+	payload: yarnStock.deleteYarnStockPayload,
+) => await postRequest("/stocks/delete", payload);

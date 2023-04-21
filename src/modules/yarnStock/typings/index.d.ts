@@ -36,4 +36,8 @@ declare namespace yarnStock {
 		reorderLevel: number;
 		lastOrderedDate?: Date;
 	}
+
+	interface deleteYarnStockPayload {
+		yarnId: number;
+	}
 }
