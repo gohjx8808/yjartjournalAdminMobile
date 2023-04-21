@@ -8,11 +8,11 @@ import { useUpdateYarnStockQuantity } from "../src/queries/yarnStockMutations";
 
 interface YarnStockCardProps {
 	stock: yarnStock.yarnStockData;
-	onDelete: (selected: yarnStock.yarnStockData) => void;
+	onSelectAction: (selected: yarnStock.yarnStockData) => void;
 }
 
 const YarnStockCard = (props: YarnStockCardProps) => {
-	const { stock, onDelete } = props;
+	const { stock, onSelectAction } = props;
 	const styles = useStyles();
 
 	const { mutate } = useUpdateYarnStockQuantity();
@@ -29,10 +29,10 @@ const YarnStockCard = (props: YarnStockCardProps) => {
 					containerStyle={styles.deleteBtnContainer}
 					style={styles.deleteBtn}
 					onPress={() => {
-						onDelete(stock);
+						onSelectAction(stock);
 					}}
 				>
-					<Icon name="close" />
+					<Icon name="more-horiz" />
 				</ClearButton>
 			</View>
 			<Card.Divider />

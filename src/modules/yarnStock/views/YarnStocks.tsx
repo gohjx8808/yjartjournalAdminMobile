@@ -9,6 +9,7 @@ import DeleteYarnStockDialog from "./DeleteYarnStockDialog";
 import YarnStockCard from "./YarnStockCard";
 import YarnStockFAB from "./YarnStockFAB";
 import YarnStockFilterDialog from "./YarnStockFilterDialog";
+import YarnStockActions from "./YarnStockActions";
 
 const YarnStocks = () => {
 	const navigation =
@@ -20,6 +21,7 @@ const YarnStocks = () => {
 		useState(false);
 	const [selectedYarnStock, setSelectedYarnStock] =
 		useState<yarnStock.yarnStockData | null>(null);
+	const [actionBottomSheet, setActionBottomSheet] = useState(false);
 
 	const { data: yarnStock } = useAllYarnStock();
 
@@ -40,8 +42,17 @@ const YarnStocks = () => {
 		setDeleteYarnStockDialogOpen(!deleteYarnStockDialogOpen);
 	};
 
-	const onDelete = (selectedStock: yarnStock.yarnStockData) => {
+	const toggleActionBottomSheet = () => {
+		setActionBottomSheet(!actionBottomSheet);
+	};
+
+	const onSelectAction = (selectedStock: yarnStock.yarnStockData) => {
 		setSelectedYarnStock(selectedStock);
+		toggleActionBottomSheet();
+	};
+
+	const onDeleteSelected = () => {
+		toggleActionBottomSheet();
 		toggleDeleteYarnStockDialog();
 	};
 
@@ -49,7 +60,11 @@ const YarnStocks = () => {
 		<>
 			<YJHeader title="Yarn Stocks" scrollViewContentCenter>
 				{yarnStock?.map(stock => (
-					<YarnStockCard stock={stock} key={stock.id} onDelete={onDelete} />
+					<YarnStockCard
+						stock={stock}
+						key={stock.id}
+						onSelectAction={onSelectAction}
+					/>
 				))}
 			</YJHeader>
 			<YarnStockFAB
@@ -62,6 +77,11 @@ const YarnStocks = () => {
 			<YarnStockFilterDialog
 				visible={filterDialog}
 				hideDialog={toggleFilterDialog}
+			/>
+			<YarnStockActions
+				isVisible={actionBottomSheet}
+				onBackdropPress={toggleActionBottomSheet}
+				onDelete={onDeleteSelected}
 			/>
 			{selectedYarnStock !== null && (
 				<DeleteYarnStockDialog
