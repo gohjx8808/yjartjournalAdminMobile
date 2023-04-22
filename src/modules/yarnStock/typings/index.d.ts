@@ -40,4 +40,9 @@ declare namespace yarnStock {
 	interface deleteYarnStockPayload {
 		yarnId: number;
 	}
+
+	interface addEditYarnStockRouteParams {
+		stockData?: yarnStockData;
+		actionType: "Add" | "Edit";
+	}
 }

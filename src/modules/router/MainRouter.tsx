@@ -4,15 +4,15 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useTheme } from "@rneui/themed";
 import React from "react";
 import Dashboard from "../dashboard/views/Dashboard";
-import AddYarnStock from "../yarnStock/views/AddYarnStock";
+import AddEditYarnStock from "../yarnStock/views/AddEditYarnStock";
 import YarnStocks from "../yarnStock/views/YarnStocks";
 import routeNames from "./routeNames";
 import MasterData from "../masterData/views/MasterData";
 
-export interface YarnStockNavigatorParamList {
+export type YarnStockNavigatorParamList = {
 	[routeNames.YARN_STOCKS_DETAILS]: undefined;
-	[routeNames.ADD_YARN_STOCK]: undefined;
-}
+	[routeNames.ADD_EDIT_YARN_STOCK]: yarnStock.addEditYarnStockRouteParams;
+};
 
 export type DrawerParamList = {
 	[routeNames.DASHBOARD]: undefined;
@@ -33,8 +33,8 @@ const YarnStockNavigator = (): JSX.Element => {
 				component={YarnStocks}
 			/>
 			<YarnStockStack.Screen
-				name={routeNames.ADD_YARN_STOCK}
-				component={AddYarnStock}
+				name={routeNames.ADD_EDIT_YARN_STOCK}
+				component={AddEditYarnStock}
 			/>
 		</YarnStockStack.Navigator>
 	);

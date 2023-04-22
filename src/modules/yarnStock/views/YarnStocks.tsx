@@ -34,7 +34,7 @@ const YarnStocks = () => {
 	};
 
 	const onAddNew = () => {
-		navigation.navigate(routeNames.ADD_YARN_STOCK);
+		navigation.navigate(routeNames.ADD_EDIT_YARN_STOCK, { actionType: "Add" });
 		toggleSpeedDial();
 	};
 
