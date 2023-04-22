@@ -2,18 +2,20 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useRoute, type RouteProp } from "@react-navigation/native";
 import { Button, makeStyles } from "@rneui/themed";
 import { useEffect } from "react";
-import { type SubmitHandler, useForm } from "react-hook-form";
+import { useForm, type SubmitHandler } from "react-hook-form";
+import { convertUTCToMYT } from "../../../helpers/helpers";
 import YJHeader from "../../../layout/YJHeader";
 import ControlledDatePicker from "../../../sharedComponents/inputs/ControlledDatePicker";
 import ControlledSelect from "../../../sharedComponents/inputs/ControlledSelect";
 import ControlledTextInput from "../../../sharedComponents/inputs/ControlledTextInput";
-import AddYarnStockSchema from "../../../validationSchemas/AddYarnStockSchema";
+import UpdateYarnStockSchema from "../../../validationSchemas/UpdateYarnStockSchema";
 import {
 	useAllYarnCategories,
 	useAllYarnColorCategories,
 } from "../../masterData/src/queries/masterDataQueries";
 import type { YarnStockNavigatorParamList } from "../../router/MainRouter";
 import type routeNames from "../../router/routeNames";
+import { useUpdateYarnStock } from "../src/queries/yarnStockMutations";
 
 const UpdateYarnStock = () => {
 	const styles = useStyles();
@@ -28,8 +30,8 @@ const UpdateYarnStock = () => {
 		reset,
 		setValue,
 		formState: { errors },
-	} = useForm<yarnStock.updateYarnStockPayload>({
-		resolver: yupResolver(AddYarnStockSchema),
+	} = useForm<yarnStock.addEditYarnStockPayload>({
+		resolver: yupResolver(UpdateYarnStockSchema),
 	});
 
 	useEffect(() => {
@@ -46,14 +48,16 @@ const UpdateYarnStock = () => {
 
 	const { data: yarnCategories } = useAllYarnCategories();
 	const { data: yarnColorCategories } = useAllYarnColorCategories();
+	const { mutate: submitUpdate } = useUpdateYarnStock();
 
 	const onSubmit: SubmitHandler<
-		yarnStock.updateYarnStockPayload
+		yarnStock.addEditYarnStockPayload
 	> = formData => {
-		// addYarnStock({
-		// 	...formData,
-		// 	lastOrderedDate: convertUTCToMYT(formData.lastOrderedDate),
-		// });
+		submitUpdate({
+			...formData,
+			yarnId: params.stockData.id,
+			lastOrderedDate: convertUTCToMYT(formData.lastOrderedDate),
+		});
 	};
 
 	return (

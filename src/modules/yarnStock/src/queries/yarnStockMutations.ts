@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import {
 	postAddYarnStock,
 	postDeleteYarnStock,
+	postUpdateYarnStock,
 	postUpdateYarnStockQuantity,
 } from "../apis/yarnStockApis";
 import { useContext } from "react";
@@ -57,6 +58,35 @@ export const useAddYarnStock = () => {
 					err.response?.data.message ?? "The yarn stock had failed to add!",
 				isSuccess: false,
 				visible: true,
+			});
+		},
+	});
+};
+
+export const useUpdateYarnStock = () => {
+	const { setStatusDialogData } = useContext(StatusDialogContext);
+	const { refetch } = useAllYarnStock();
+	const navigation =
+		useNavigation<NavigationProp<YarnStockNavigatorParamList>>();
+
+	return useMutation(["updateYarnStock"], postUpdateYarnStock, {
+		onSuccess: async () => {
+			await refetch();
+			navigation.navigate(routeNames.YARN_STOCKS_DETAILS);
+			setStatusDialogData({
+				title: "Update Yarn Stock",
+				visible: true,
+				message: "The yarn stock had been updated!",
+				isSuccess: true,
+			});
+		},
+		onError: (err: AxiosError<YJApiError>) => {
+			setStatusDialogData({
+				title: "Update Yarn Stock",
+				visible: true,
+				message:
+					err.response?.data.message ?? "The yarn stock had failed to update!",
+				isSuccess: false,
 			});
 		},
 	});

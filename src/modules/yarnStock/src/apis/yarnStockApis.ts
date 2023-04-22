@@ -13,6 +13,10 @@ export const postAddYarnStock = async (
 	payload: yarnStock.addYarnStockPayload,
 ) => await postRequest("/stocks/add-new", payload);
 
+export const postUpdateYarnStock = async (
+	payload: yarnStock.updateYarnStockPayload,
+) => await postRequest("/stocks/update", payload);
+
 export const postDeleteYarnStock = async (
 	payload: yarnStock.deleteYarnStockPayload,
 ) => await postRequest("/stocks/delete", payload);
