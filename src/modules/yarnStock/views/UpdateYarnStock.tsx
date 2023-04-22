@@ -41,7 +41,10 @@ const UpdateYarnStock = () => {
 			cost: stockData.costPerItem.toString(),
 			reorderLevel: stockData.reorderLevel.toString(),
 		});
-		if (stockData.lastOrderedAt !== undefined) {
+		if (
+			stockData.lastOrderedAt !== undefined &&
+			stockData.lastOrderedAt !== null
+		) {
 			setValue("lastOrderedDate", new Date(stockData.lastOrderedAt));
 		}
 	}, [params.stockData]);
