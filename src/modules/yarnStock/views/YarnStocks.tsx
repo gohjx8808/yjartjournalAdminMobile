@@ -34,7 +34,7 @@ const YarnStocks = () => {
 	};
 
 	const onAddNew = () => {
-		navigation.navigate(routeNames.ADD_EDIT_YARN_STOCK, { actionType: "Add" });
+		navigation.navigate(routeNames.ADD_YARN_STOCK);
 		toggleSpeedDial();
 	};
 
@@ -49,6 +49,15 @@ const YarnStocks = () => {
 	const onSelectAction = (selectedStock: yarnStock.yarnStockData) => {
 		setSelectedYarnStock(selectedStock);
 		toggleActionBottomSheet();
+	};
+
+	const onEditSelected = () => {
+		if (selectedYarnStock !== null) {
+			toggleActionBottomSheet();
+			navigation.navigate(routeNames.UPDATE_YARN_STOCK, {
+				stockData: selectedYarnStock,
+			});
+		}
 	};
 
 	const onDeleteSelected = () => {
@@ -81,6 +90,7 @@ const YarnStocks = () => {
 			<YarnStockActions
 				isVisible={actionBottomSheet}
 				onBackdropPress={toggleActionBottomSheet}
+				onEdit={onEditSelected}
 				onDelete={onDeleteSelected}
 			/>
 			{selectedYarnStock !== null && (

@@ -16,7 +16,7 @@ declare namespace yarnStock {
 		inStockQuantity: number;
 		usedQuantity: number;
 		reorderLevel: number;
-		lastOrderedAt: string;
+		lastOrderedAt?: string;
 		yarnColorCategory: optionData;
 		yarnCategory: optionData;
 		reorderStatus: "Optimum" | "Reorder";
@@ -27,13 +27,16 @@ declare namespace yarnStock {
 		quantity: number;
 	}
 
-	interface addYarnStockPayload {
+	interface addYarnStockPayload extends addEditYarnStockPayload {
+		quantity: number;
+	}
+
+	interface addEditYarnStockPayload {
 		yarnCategory: optionData;
 		yarnColorCategory: optionData;
 		detailedColor: string;
-		cost: number;
-		quantity: number;
-		reorderLevel: number;
+		cost: string;
+		reorderLevel: string;
 		lastOrderedDate?: Date;
 	}
 
@@ -41,8 +44,10 @@ declare namespace yarnStock {
 		yarnId: number;
 	}
 
-	interface addEditYarnStockRouteParams {
-		stockData?: yarnStockData;
-		actionType: "Add" | "Edit";
+	type updateYarnStockPayload = addEditYarnStockPayload &
+		deleteYarnStockPayload;
+
+	interface updateYarnStockRouteParams {
+		stockData: yarnStockData;
 	}
 }

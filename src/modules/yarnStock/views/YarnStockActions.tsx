@@ -3,17 +3,22 @@ import type { BottomSheetProps } from "@rneui/themed";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 interface YarnStockActionsProps extends Omit<BottomSheetProps, "modalProps"> {
+	onEdit: () => void;
 	onDelete: () => void;
 }
 
 const YarnStockActions = (props: YarnStockActionsProps) => {
-	const { onDelete } = props;
+	const { onDelete, onEdit } = props;
 	const insets = useSafeAreaInsets();
 	const styles = useStyles();
 
 	return (
 		<BottomSheet {...props}>
-			<ListItem bottomDivider containerStyle={styles.listItemContainer}>
+			<ListItem
+				bottomDivider
+				containerStyle={styles.listItemContainer}
+				onPress={onEdit}
+			>
 				<Icon name="edit" />
 				<ListItem.Content>
 					<ListItem.Title>Update Details</ListItem.Title>

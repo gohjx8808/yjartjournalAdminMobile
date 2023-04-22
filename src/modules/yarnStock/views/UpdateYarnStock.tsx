@@ -1,8 +1,8 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useRoute, type RouteProp } from "@react-navigation/native";
 import { Button, makeStyles } from "@rneui/themed";
-import type { SubmitHandler } from "react-hook-form";
-import { useForm } from "react-hook-form";
-import { convertUTCToMYT } from "../../../helpers/helpers";
+import { useEffect } from "react";
+import { type SubmitHandler, useForm } from "react-hook-form";
 import YJHeader from "../../../layout/YJHeader";
 import ControlledDatePicker from "../../../sharedComponents/inputs/ControlledDatePicker";
 import ControlledSelect from "../../../sharedComponents/inputs/ControlledSelect";
@@ -12,42 +12,53 @@ import {
 	useAllYarnCategories,
 	useAllYarnColorCategories,
 } from "../../masterData/src/queries/masterDataQueries";
-import { useAddYarnStock } from "../src/queries/yarnStockMutations";
-import { type RouteProp, useRoute } from "@react-navigation/native";
 import type { YarnStockNavigatorParamList } from "../../router/MainRouter";
 import type routeNames from "../../router/routeNames";
 
-const AddEditYarnStock = () => {
+const UpdateYarnStock = () => {
 	const styles = useStyles();
 	const { params } =
 		useRoute<
-			RouteProp<YarnStockNavigatorParamList, routeNames.ADD_EDIT_YARN_STOCK>
+			RouteProp<YarnStockNavigatorParamList, routeNames.UPDATE_YARN_STOCK>
 		>();
-
-	const isAddAction = params.actionType === "Add";
 
 	const {
 		control,
 		handleSubmit,
+		reset,
+		setValue,
 		formState: { errors },
-	} = useForm<yarnStock.addYarnStockPayload>({
+	} = useForm<yarnStock.updateYarnStockPayload>({
 		resolver: yupResolver(AddYarnStockSchema),
 	});
 
+	useEffect(() => {
+		const stockData = params.stockData;
+		reset({
+			...stockData,
+			cost: stockData.costPerItem.toString(),
+			reorderLevel: stockData.reorderLevel.toString(),
+		});
+		if (stockData.lastOrderedAt !== undefined) {
+			setValue("lastOrderedDate", new Date(stockData.lastOrderedAt));
+		}
+	}, [params.stockData]);
+
 	const { data: yarnCategories } = useAllYarnCategories();
 	const { data: yarnColorCategories } = useAllYarnColorCategories();
-	const { mutate: addYarnStock } = useAddYarnStock();
 
-	const onSubmit: SubmitHandler<yarnStock.addYarnStockPayload> = formData => {
-		addYarnStock({
-			...formData,
-			lastOrderedDate: convertUTCToMYT(formData.lastOrderedDate),
-		});
+	const onSubmit: SubmitHandler<
+		yarnStock.updateYarnStockPayload
+	> = formData => {
+		// addYarnStock({
+		// 	...formData,
+		// 	lastOrderedDate: convertUTCToMYT(formData.lastOrderedDate),
+		// });
 	};
 
 	return (
 		<YJHeader
-			title={isAddAction ? "Add Yarn Stock" : "Update Yarn Stock"}
+			title="Update Yarn Stock"
 			back
 			customScrollViewContentContainerStyle={styles.scrollViewContent}
 		>
@@ -64,17 +75,6 @@ const AddEditYarnStock = () => {
 				label="Cost"
 				errorMessage={errors.cost?.message?.toString()}
 			/>
-			<>
-				{isAddAction && (
-					<ControlledTextInput
-						control={control}
-						keyboardType="numeric"
-						name="quantity"
-						label="Quantity"
-						errorMessage={errors.quantity?.message?.toString()}
-					/>
-				)}
-			</>
 			<ControlledTextInput
 				control={control}
 				keyboardType="numeric"
@@ -112,7 +112,7 @@ const AddEditYarnStock = () => {
 	);
 };
 
-export default AddEditYarnStock;
+export default UpdateYarnStock;
 
 const useStyles = makeStyles(() => ({
 	scrollViewContent: {
