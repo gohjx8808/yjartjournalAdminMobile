@@ -93,9 +93,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.yjartjournalaadminmobile"
+    namespace "com.yjartjournaladminmobile"
     defaultConfig {
-        applicationId "com.yjartjournalaadminmobile"
+        applicationId "com.yjartjournaladminmobile"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

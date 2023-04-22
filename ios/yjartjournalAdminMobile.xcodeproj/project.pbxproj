@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* yjartjournalAadminMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* yjartjournalAadminMobileTests.m */; };
+		00E356F31AD99517003FC87E /* yjartjournalAdminMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* yjartjournalAdminMobileTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		4A61B091D427E7AEF9384AC2 /* libPods-yjartjournalAdminMobile-yjartjournalAadminMobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF15BA3236D58510EB7567D4 /* libPods-yjartjournalAdminMobile-yjartjournalAadminMobileTests.a */; };
+		4A61B091D427E7AEF9384AC2 /* libPods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF15BA3236D58510EB7567D4 /* libPods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.a */; };
 		6DCF59F0DC1ADC63542B6794 /* libPods-yjartjournalAdminMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E433E4E0CD5457E93C149F4 /* libPods-yjartjournalAdminMobile.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -27,10 +27,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* yjartjournalAadminMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = yjartjournalAadminMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* yjartjournalAdminMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = yjartjournalAdminMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* yjartjournalAadminMobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = yjartjournalAadminMobileTests.m; sourceTree = "<group>"; };
-		0A36C3910FA2A9499DCC19D7 /* Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests.release.xcconfig"; path = "Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests.release.xcconfig"; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* yjartjournalAdminMobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = yjartjournalAdminMobileTests.m; sourceTree = "<group>"; };
+		0A36C3910FA2A9499DCC19D7 /* Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.release.xcconfig"; path = "Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* yjartjournalAdminMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yjartjournalAdminMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = yjartjournalAdminMobile/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = yjartjournalAdminMobile/AppDelegate.mm; sourceTree = "<group>"; };
@@ -39,9 +39,9 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = yjartjournalAdminMobile/main.m; sourceTree = "<group>"; };
 		6E433E4E0CD5457E93C149F4 /* libPods-yjartjournalAdminMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-yjartjournalAdminMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = yjartjournalAdminMobile/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B2452299FD2F43ADAE311275 /* Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests.debug.xcconfig"; path = "Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B2452299FD2F43ADAE311275 /* Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.debug.xcconfig"; path = "Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA2AAED737D409F8CF0D7555 /* Pods-yjartjournalAdminMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yjartjournalAdminMobile.release.xcconfig"; path = "Target Support Files/Pods-yjartjournalAdminMobile/Pods-yjartjournalAdminMobile.release.xcconfig"; sourceTree = "<group>"; };
-		BF15BA3236D58510EB7567D4 /* libPods-yjartjournalAdminMobile-yjartjournalAadminMobileTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-yjartjournalAdminMobile-yjartjournalAadminMobileTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF15BA3236D58510EB7567D4 /* libPods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1E81F31227EE91111C8FCE1 /* Pods-yjartjournalAdminMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yjartjournalAdminMobile.debug.xcconfig"; path = "Target Support Files/Pods-yjartjournalAdminMobile/Pods-yjartjournalAdminMobile.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A61B091D427E7AEF9384AC2 /* libPods-yjartjournalAdminMobile-yjartjournalAadminMobileTests.a in Frameworks */,
+				4A61B091D427E7AEF9384AC2 /* libPods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,13 +66,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* yjartjournalAadminMobileTests */ = {
+		00E356EF1AD99517003FC87E /* yjartjournalAdminMobileTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* yjartjournalAadminMobileTests.m */,
+				00E356F21AD99517003FC87E /* yjartjournalAdminMobileTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = yjartjournalAadminMobileTests;
+			path = yjartjournalAdminMobileTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -101,7 +101,7 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				6E433E4E0CD5457E93C149F4 /* libPods-yjartjournalAdminMobile.a */,
-				BF15BA3236D58510EB7567D4 /* libPods-yjartjournalAdminMobile-yjartjournalAadminMobileTests.a */,
+				BF15BA3236D58510EB7567D4 /* libPods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -118,7 +118,7 @@
 			children = (
 				13B07FAE1A68108700A75B9A /* yjartjournalAdminMobile */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* yjartjournalAadminMobileTests */,
+				00E356EF1AD99517003FC87E /* yjartjournalAdminMobileTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
@@ -132,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				13B07F961A680F5B00A75B9A /* yjartjournalAdminMobile.app */,
-				00E356EE1AD99517003FC87E /* yjartjournalAadminMobileTests.xctest */,
+				00E356EE1AD99517003FC87E /* yjartjournalAdminMobileTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -142,8 +142,8 @@
 			children = (
 				D1E81F31227EE91111C8FCE1 /* Pods-yjartjournalAdminMobile.debug.xcconfig */,
 				BA2AAED737D409F8CF0D7555 /* Pods-yjartjournalAdminMobile.release.xcconfig */,
-				B2452299FD2F43ADAE311275 /* Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests.debug.xcconfig */,
-				0A36C3910FA2A9499DCC19D7 /* Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests.release.xcconfig */,
+				B2452299FD2F43ADAE311275 /* Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.debug.xcconfig */,
+				0A36C3910FA2A9499DCC19D7 /* Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -151,9 +151,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* yjartjournalAadminMobileTests */ = {
+		00E356ED1AD99517003FC87E /* yjartjournalAdminMobileTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "yjartjournalAadminMobileTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "yjartjournalAdminMobileTests" */;
 			buildPhases = (
 				AA321A9A70AC17DFFF412B17 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -167,9 +167,9 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = yjartjournalAadminMobileTests;
-			productName = yjartjournalAadminMobileTests;
-			productReference = 00E356EE1AD99517003FC87E /* yjartjournalAadminMobileTests.xctest */;
+			name = yjartjournalAdminMobileTests;
+			productName = yjartjournalAdminMobileTests;
+			productReference = 00E356EE1AD99517003FC87E /* yjartjournalAdminMobileTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		13B07F861A680F5B00A75B9A /* yjartjournalAdminMobile */ = {
@@ -225,7 +225,7 @@
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* yjartjournalAdminMobile */,
-				00E356ED1AD99517003FC87E /* yjartjournalAadminMobileTests */,
+				00E356ED1AD99517003FC87E /* yjartjournalAdminMobileTests */,
 			);
 		};
 /* End PBXProject section */
@@ -289,15 +289,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8D38F6F871768C10368613BC /* [CP] Embed Pods Frameworks */ = {
@@ -354,7 +354,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -367,15 +367,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -404,7 +404,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* yjartjournalAadminMobileTests.m in Sources */,
+				00E356F31AD99517003FC87E /* yjartjournalAdminMobileTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,14 +430,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B2452299FD2F43ADAE311275 /* Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests.debug.xcconfig */;
+			baseConfigurationReference = B2452299FD2F43ADAE311275 /* Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = yjartjournalAadminMobileTests/Info.plist;
+				INFOPLIST_FILE = yjartjournalAdminMobileTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -457,11 +457,11 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A36C3910FA2A9499DCC19D7 /* Pods-yjartjournalAdminMobile-yjartjournalAadminMobileTests.release.xcconfig */;
+			baseConfigurationReference = 0A36C3910FA2A9499DCC19D7 /* Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = yjartjournalAadminMobileTests/Info.plist;
+				INFOPLIST_FILE = yjartjournalAdminMobileTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -486,6 +486,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VW92C8G4WT;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = yjartjournalAdminMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -513,6 +514,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VW92C8G4WT;
 				INFOPLIST_FILE = yjartjournalAdminMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -671,7 +673,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "yjartjournalAadminMobileTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "yjartjournalAdminMobileTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
