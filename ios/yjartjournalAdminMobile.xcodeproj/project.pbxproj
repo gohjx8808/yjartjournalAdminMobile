@@ -11,9 +11,14 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		4A61B091D427E7AEF9384AC2 /* libPods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF15BA3236D58510EB7567D4 /* libPods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.a */; };
-		6DCF59F0DC1ADC63542B6794 /* libPods-yjartjournalAdminMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E433E4E0CD5457E93C149F4 /* libPods-yjartjournalAdminMobile.a */; };
+		2EC7D4DB29F55B8300705F94 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
+		2EC7D4DC29F55B8300705F94 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2EC7D4E029F55B8300705F94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		2EC7D4E129F55B8300705F94 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		4AECA7B77A43AAE073DB07E6 /* libPods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 472A591159F9ED8B89733901 /* libPods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		A68F4CA10C196776487F48E4 /* libPods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5F28A9B82594DE644FA816 /* libPods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile.a */; };
+		B6D290378D686728E35B8955 /* libPods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 881FC21959480DA896C6703C /* libPods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,12 +42,21 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = yjartjournalAdminMobile/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = yjartjournalAdminMobile/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = yjartjournalAdminMobile/main.m; sourceTree = "<group>"; };
-		6E433E4E0CD5457E93C149F4 /* libPods-yjartjournalAdminMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-yjartjournalAdminMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B56C9648A74D42C11C92329 /* Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile.release.xcconfig"; path = "Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile.release.xcconfig"; sourceTree = "<group>"; };
+		2EC7D4E829F55B8300705F94 /* yjartjournalAdminMobileDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yjartjournalAdminMobileDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EC7D4E929F55B8300705F94 /* yjartjournalAdminMobile dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "yjartjournalAdminMobile dev-Info.plist"; path = "/Users/gohjx/Documents/yjartjournalAdminMobile/ios/yjartjournalAdminMobile dev-Info.plist"; sourceTree = "<absolute>"; };
+		338217C9D1DFE3FB0668BD2D /* Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile.debug.xcconfig"; path = "Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile.debug.xcconfig"; sourceTree = "<group>"; };
+		42D2F51A8E48DCA3A36C5DF2 /* Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests.debug.xcconfig"; path = "Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
+		472A591159F9ED8B89733901 /* libPods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DEC8AA47ACCE412445F5D08 /* Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev.debug.xcconfig"; path = "Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = yjartjournalAdminMobile/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		881FC21959480DA896C6703C /* libPods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		90AF197A3122274A621A4513 /* Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev.release.xcconfig"; path = "Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev.release.xcconfig"; sourceTree = "<group>"; };
 		B2452299FD2F43ADAE311275 /* Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.debug.xcconfig"; path = "Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA2AAED737D409F8CF0D7555 /* Pods-yjartjournalAdminMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yjartjournalAdminMobile.release.xcconfig"; path = "Target Support Files/Pods-yjartjournalAdminMobile/Pods-yjartjournalAdminMobile.release.xcconfig"; sourceTree = "<group>"; };
-		BF15BA3236D58510EB7567D4 /* libPods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1E81F31227EE91111C8FCE1 /* Pods-yjartjournalAdminMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yjartjournalAdminMobile.debug.xcconfig"; path = "Target Support Files/Pods-yjartjournalAdminMobile/Pods-yjartjournalAdminMobile.debug.xcconfig"; sourceTree = "<group>"; };
+		E637D0E5785BDD4B59ECE47D /* Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests.release.xcconfig"; path = "Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests.release.xcconfig"; sourceTree = "<group>"; };
+		EC5F28A9B82594DE644FA816 /* libPods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -51,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A61B091D427E7AEF9384AC2 /* libPods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.a in Frameworks */,
+				B6D290378D686728E35B8955 /* libPods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +73,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DCF59F0DC1ADC63542B6794 /* libPods-yjartjournalAdminMobile.a in Frameworks */,
+				A68F4CA10C196776487F48E4 /* libPods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2EC7D4DD29F55B8300705F94 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AECA7B77A43AAE073DB07E6 /* libPods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,8 +122,9 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				6E433E4E0CD5457E93C149F4 /* libPods-yjartjournalAdminMobile.a */,
-				BF15BA3236D58510EB7567D4 /* libPods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.a */,
+				EC5F28A9B82594DE644FA816 /* libPods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile.a */,
+				472A591159F9ED8B89733901 /* libPods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev.a */,
+				881FC21959480DA896C6703C /* libPods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -122,6 +145,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				2EC7D4E929F55B8300705F94 /* yjartjournalAdminMobile dev-Info.plist */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -133,6 +157,7 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* yjartjournalAdminMobile.app */,
 				00E356EE1AD99517003FC87E /* yjartjournalAdminMobileTests.xctest */,
+				2EC7D4E829F55B8300705F94 /* yjartjournalAdminMobileDev.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,6 +169,12 @@
 				BA2AAED737D409F8CF0D7555 /* Pods-yjartjournalAdminMobile.release.xcconfig */,
 				B2452299FD2F43ADAE311275 /* Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.debug.xcconfig */,
 				0A36C3910FA2A9499DCC19D7 /* Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.release.xcconfig */,
+				338217C9D1DFE3FB0668BD2D /* Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile.debug.xcconfig */,
+				1B56C9648A74D42C11C92329 /* Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile.release.xcconfig */,
+				7DEC8AA47ACCE412445F5D08 /* Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev.debug.xcconfig */,
+				90AF197A3122274A621A4513 /* Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev.release.xcconfig */,
+				42D2F51A8E48DCA3A36C5DF2 /* Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests.debug.xcconfig */,
+				E637D0E5785BDD4B59ECE47D /* Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -194,6 +225,28 @@
 			productReference = 13B07F961A680F5B00A75B9A /* yjartjournalAdminMobile.app */;
 			productType = "com.apple.product-type.application";
 		};
+		2EC7D4D729F55B8300705F94 /* yjartjournalAdminMobileDev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2EC7D4E529F55B8300705F94 /* Build configuration list for PBXNativeTarget "yjartjournalAdminMobileDev" */;
+			buildPhases = (
+				2EC7D4D829F55B8300705F94 /* [CP] Check Pods Manifest.lock */,
+				2EC7D4D929F55B8300705F94 /* Start Packager */,
+				2EC7D4DA29F55B8300705F94 /* Sources */,
+				2EC7D4DD29F55B8300705F94 /* Frameworks */,
+				2EC7D4DF29F55B8300705F94 /* Resources */,
+				2EC7D4E229F55B8300705F94 /* Bundle React Native code and images */,
+				2EC7D4E329F55B8300705F94 /* [CP] Embed Pods Frameworks */,
+				2EC7D4E429F55B8300705F94 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = yjartjournalAdminMobileDev;
+			productName = yjartjournalAdminMobile;
+			productReference = 2EC7D4E829F55B8300705F94 /* yjartjournalAdminMobileDev.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -226,6 +279,7 @@
 			targets = (
 				13B07F861A680F5B00A75B9A /* yjartjournalAdminMobile */,
 				00E356ED1AD99517003FC87E /* yjartjournalAdminMobileTests */,
+				2EC7D4D729F55B8300705F94 /* yjartjournalAdminMobileDev */,
 			);
 		};
 /* End PBXProject section */
@@ -244,6 +298,15 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2EC7D4DF29F55B8300705F94 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EC7D4E029F55B8300705F94 /* LaunchScreen.storyboard in Resources */,
+				2EC7D4E129F55B8300705F94 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,15 +335,106 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile/Pods-yjartjournalAdminMobile-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile/Pods-yjartjournalAdminMobile-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile/Pods-yjartjournalAdminMobile-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2EC7D4D829F55B8300705F94 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2EC7D4D929F55B8300705F94 /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2EC7D4E229F55B8300705F94 /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/.xcode.env",
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
+		};
+		2EC7D4E329F55B8300705F94 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2EC7D4E429F55B8300705F94 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5DE4A29795E97D27F37D8423 /* [CP] Embed Pods Frameworks */ = {
@@ -289,15 +443,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8D38F6F871768C10368613BC /* [CP] Embed Pods Frameworks */ = {
@@ -306,15 +460,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile/Pods-yjartjournalAdminMobile-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile/Pods-yjartjournalAdminMobile-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile/Pods-yjartjournalAdminMobile-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A0DEDD138876E75C6979605B /* [CP] Check Pods Manifest.lock */ = {
@@ -332,7 +486,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-yjartjournalAdminMobile-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -354,7 +508,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -367,15 +521,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests/Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -417,6 +571,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2EC7D4DA29F55B8300705F94 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EC7D4DB29F55B8300705F94 /* AppDelegate.mm in Sources */,
+				2EC7D4DC29F55B8300705F94 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -430,7 +593,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B2452299FD2F43ADAE311275 /* Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.debug.xcconfig */;
+			baseConfigurationReference = 42D2F51A8E48DCA3A36C5DF2 /* Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -457,7 +620,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A36C3910FA2A9499DCC19D7 /* Pods-yjartjournalAdminMobile-yjartjournalAdminMobileTests.release.xcconfig */;
+			baseConfigurationReference = E637D0E5785BDD4B59ECE47D /* Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -481,7 +644,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D1E81F31227EE91111C8FCE1 /* Pods-yjartjournalAdminMobile.debug.xcconfig */;
+			baseConfigurationReference = 338217C9D1DFE3FB0668BD2D /* Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -489,6 +652,8 @@
 				DEVELOPMENT_TEAM = VW92C8G4WT;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = yjartjournalAdminMobile/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "YJ Artjournal Admin";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -509,13 +674,15 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA2AAED737D409F8CF0D7555 /* Pods-yjartjournalAdminMobile.release.xcconfig */;
+			baseConfigurationReference = 1B56C9648A74D42C11C92329 /* Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobile.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VW92C8G4WT;
 				INFOPLIST_FILE = yjartjournalAdminMobile/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "YJ Artjournal Admin";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -528,6 +695,64 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = yjartjournalAdminMobile;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		2EC7D4E629F55B8300705F94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7DEC8AA47ACCE412445F5D08 /* Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VW92C8G4WT;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "yjartjournalAdminMobile dev-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "YJ Artjournal Admin Dev";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		2EC7D4E729F55B8300705F94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90AF197A3122274A621A4513 /* Pods-yjartjournalAdminMobileCommonPods-yjartjournalAdminMobileDev.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VW92C8G4WT;
+				INFOPLIST_FILE = "yjartjournalAdminMobile dev-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "YJ Artjournal Admin Dev";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -687,6 +912,15 @@
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
 				13B07F951A680F5B00A75B9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2EC7D4E529F55B8300705F94 /* Build configuration list for PBXNativeTarget "yjartjournalAdminMobileDev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2EC7D4E629F55B8300705F94 /* Debug */,
+				2EC7D4E729F55B8300705F94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

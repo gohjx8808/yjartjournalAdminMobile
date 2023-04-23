@@ -4,6 +4,7 @@ import Config from "react-native-config";
 const apiUrl = Config.YJARTJOURNAL_API_URL;
 
 export const getRequest = async <T>(url: string, data?: any) => {
+	console.log(apiUrl);
 	let apiResponse;
 	if (apiUrl !== undefined) {
 		apiResponse = axios.get<YJResponse<T>>(`${apiUrl}${url}`, { params: data });
