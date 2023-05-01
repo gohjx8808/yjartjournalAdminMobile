@@ -22,9 +22,10 @@ if linkage != nil
 end
 
 abstract_target 'yjartjournalAdminMobileCommonPods' do
+  pod 'FirebaseCore', :modular_headers => true
+  pod 'GoogleUtilities', :modular_headers => true
+
   target 'yjartjournalAdminMobile' do
-    pod 'FirebaseCore', :modular_headers => true
-    pod 'GoogleUtilities', :modular_headers => true
   end
 
   target 'yjartjournalAdminMobileDev' do
