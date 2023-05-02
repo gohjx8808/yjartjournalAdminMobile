@@ -10,6 +10,8 @@ import YarnStockCard from "./YarnStockCard";
 import YarnStockFAB from "./YarnStockFAB";
 import YarnStockFilterDialog from "./YarnStockFilterDialog";
 import YarnStockActions from "./YarnStockActions";
+import { Card } from "@rneui/themed";
+import YJText from "../../../sharedComponents/text/YJText";
 
 const YarnStocks = () => {
 	const navigation =
@@ -68,13 +70,19 @@ const YarnStocks = () => {
 	return (
 		<>
 			<YJHeader title="Yarn Stocks" scrollViewContentCenter>
-				{yarnStock?.map(stock => (
-					<YarnStockCard
-						stock={stock}
-						key={stock.id}
-						onSelectAction={onSelectAction}
-					/>
-				))}
+				{yarnStock !== undefined && yarnStock.length > 0 ? (
+					yarnStock.map(stock => (
+						<YarnStockCard
+							stock={stock}
+							key={stock.id}
+							onSelectAction={onSelectAction}
+						/>
+					))
+				) : (
+					<Card containerStyle={{ width: "80%" }}>
+						<YJText center>No stock available!</YJText>
+					</Card>
+				)}
 			</YJHeader>
 			<YarnStockFAB
 				isOpen={speedDialOpen}
