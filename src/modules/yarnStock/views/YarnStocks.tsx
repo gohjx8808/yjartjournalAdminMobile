@@ -10,12 +10,14 @@ import YarnStockCard from "./YarnStockCard";
 import YarnStockFAB from "./YarnStockFAB";
 import YarnStockFilterDialog from "./YarnStockFilterDialog";
 import YarnStockActions from "./YarnStockActions";
-import { Card } from "@rneui/themed";
+import { Card, Skeleton, makeStyles } from "@rneui/themed";
 import YJText from "../../../sharedComponents/text/YJText";
+import LinearGradient from "react-native-linear-gradient";
 
 const YarnStocks = () => {
 	const navigation =
 		useNavigation<NavigationProp<YarnStockNavigatorParamList>>();
+	const styles = useStyles();
 
 	const [filterDialog, setFilterDialog] = useState(false);
 	const [speedDialOpen, setSpeedDialOpen] = useState(false);
@@ -25,7 +27,7 @@ const YarnStocks = () => {
 		useState<yarnStock.yarnStockData | null>(null);
 	const [actionBottomSheet, setActionBottomSheet] = useState(false);
 
-	const { data: yarnStock } = useAllYarnStock();
+	const { data: yarnStock, isLoading: yarnStockLoading } = useAllYarnStock();
 
 	const toggleFilterDialog = () => {
 		setFilterDialog(!filterDialog);
@@ -70,7 +72,13 @@ const YarnStocks = () => {
 	return (
 		<>
 			<YJHeader title="Yarn Stocks" scrollViewContentCenter>
-				{yarnStock !== undefined && yarnStock.length > 0 ? (
+				{yarnStockLoading ? (
+					<Skeleton
+						LinearGradientComponent={LinearGradient}
+						animation="wave"
+						style={styles.cardSkeleton}
+					/>
+				) : yarnStock !== undefined && yarnStock.length > 0 ? (
 					yarnStock.map(stock => (
 						<YarnStockCard
 							stock={stock}
@@ -113,3 +121,11 @@ const YarnStocks = () => {
 };
 
 export default YarnStocks;
+
+const useStyles = makeStyles(() => ({
+	cardSkeleton: {
+		width: "80%",
+		height: 300,
+		marginVertical: 20,
+	},
+}));
