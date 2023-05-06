@@ -13,6 +13,7 @@ import {
 	useAllYarnColorCategories,
 } from "../../masterData/src/queries/masterDataQueries";
 import { useAddYarnStock } from "../src/queries/yarnStockMutations";
+import YJImagePicker from "../../../sharedComponents/inputs/YJImagePicker";
 
 const AddYarnStock = () => {
 	const styles = useStyles();
@@ -88,6 +89,7 @@ const AddYarnStock = () => {
 				name="lastOrderedDate"
 				title="Last Ordered Date"
 			/>
+			<YJImagePicker />
 			<Button
 				color="secondary"
 				containerStyle={styles.submitBtnContainer}
@@ -103,7 +105,7 @@ export default AddYarnStock;
 
 const useStyles = makeStyles(() => ({
 	scrollViewContent: {
-		marginHorizontal: 20,
+		marginHorizontal: 30,
 		marginVertical: 40,
 	},
 	submitBtnContainer: {

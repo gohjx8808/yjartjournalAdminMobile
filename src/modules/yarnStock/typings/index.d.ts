@@ -20,7 +20,7 @@ declare namespace yarnStock {
 		yarnColorCategory: optionData;
 		yarnCategory: optionData;
 		reorderStatus: "Optimum" | "Reorder";
-		imageUrl?: string;
+		imageUrl?: string | null;
 	}
 
 	interface updateQuantityPayload {

@@ -16,6 +16,7 @@ import {
 import type { YarnStockNavigatorParamList } from "../../router/MainRouter";
 import type routeNames from "../../router/routeNames";
 import { useUpdateYarnStock } from "../src/queries/yarnStockMutations";
+import YJImagePicker from "../../../sharedComponents/inputs/YJImagePicker";
 
 const UpdateYarnStock = () => {
 	const styles = useStyles();
@@ -108,6 +109,7 @@ const UpdateYarnStock = () => {
 				name="lastOrderedDate"
 				title="Last Ordered Date"
 			/>
+			<YJImagePicker imgUrl={params.stockData.imageUrl} />
 			<Button
 				color="secondary"
 				containerStyle={styles.submitBtnContainer}
