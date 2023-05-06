@@ -36,6 +36,14 @@ const YarnStockCard = (props: YarnStockCardProps) => {
 				</ClearButton>
 			</View>
 			<Card.Divider />
+			{stock.imageUrl !== null && (
+				<Card.Image
+					containerStyle={{ marginBottom: 10 }}
+					source={{
+						uri: stock.imageUrl,
+					}}
+				/>
+			)}
 			<SpaceBetweenText
 				frontText="Cost per Item"
 				backText={formatCurrency(stock.costPerItem)}
