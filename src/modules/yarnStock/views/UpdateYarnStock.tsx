@@ -56,7 +56,8 @@ const UpdateYarnStock = () => {
 
 	const { data: yarnCategories } = useAllYarnCategories();
 	const { data: yarnColorCategories } = useAllYarnColorCategories();
-	const { mutate: submitUpdate } = useUpdateYarnStock();
+	const { mutate: submitUpdate, isLoading: updateLoading } =
+		useUpdateYarnStock();
 
 	const onSubmit: SubmitHandler<
 		yarnStock.addEditYarnStockPayload
@@ -132,6 +133,8 @@ const UpdateYarnStock = () => {
 				color="secondary"
 				containerStyle={styles.submitBtnContainer}
 				onPress={handleSubmit(onSubmit)}
+				loading={updateLoading}
+				disabled={updateLoading}
 			>
 				Submit
 			</Button>

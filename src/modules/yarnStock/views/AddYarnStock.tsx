@@ -32,7 +32,7 @@ const AddYarnStock = () => {
 
 	const { data: yarnCategories } = useAllYarnCategories();
 	const { data: yarnColorCategories } = useAllYarnColorCategories();
-	const { mutate: addYarnStock } = useAddYarnStock();
+	const { mutate: addYarnStock, isLoading: addLoading } = useAddYarnStock();
 
 	const onSubmit: SubmitHandler<yarnStock.addYarnStockPayload> = formData => {
 		let stockImg = null;
@@ -110,6 +110,8 @@ const AddYarnStock = () => {
 				color="secondary"
 				containerStyle={styles.submitBtnContainer}
 				onPress={handleSubmit(onSubmit)}
+				loading={addLoading}
+				disabled={addLoading}
 			>
 				Submit
 			</Button>
