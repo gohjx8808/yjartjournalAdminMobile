@@ -1,13 +1,14 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRoute, type RouteProp } from "@react-navigation/native";
 import { Button, makeStyles } from "@rneui/themed";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { convertUTCToMYT } from "../../../helpers/helpers";
 import YJHeader from "../../../layout/YJHeader";
 import ControlledDatePicker from "../../../sharedComponents/inputs/ControlledDatePicker";
 import ControlledSelect from "../../../sharedComponents/inputs/ControlledSelect";
 import ControlledTextInput from "../../../sharedComponents/inputs/ControlledTextInput";
+import YJImagePicker from "../../../sharedComponents/inputs/imagePicker/YJImagePicker";
 import UpdateYarnStockSchema from "../../../validationSchemas/UpdateYarnStockSchema";
 import {
 	useAllYarnCategories,
@@ -16,7 +17,7 @@ import {
 import type { YarnStockNavigatorParamList } from "../../router/MainRouter";
 import type routeNames from "../../router/routeNames";
 import { useUpdateYarnStock } from "../src/queries/yarnStockMutations";
-import YJImagePicker from "../../../sharedComponents/inputs/YJImagePicker";
+import { type ImagePickerResponse } from "react-native-image-picker";
 
 const UpdateYarnStock = () => {
 	const styles = useStyles();
@@ -24,6 +25,9 @@ const UpdateYarnStock = () => {
 		useRoute<
 			RouteProp<YarnStockNavigatorParamList, routeNames.UPDATE_YARN_STOCK>
 		>();
+
+	const [imageSelectedBase64, setImageSelectedBase64] =
+		useState<ImagePickerResponse | null>(null);
 
 	const {
 		control,
@@ -57,11 +61,20 @@ const UpdateYarnStock = () => {
 	const onSubmit: SubmitHandler<
 		yarnStock.addEditYarnStockPayload
 	> = formData => {
+		let stockImg = null;
+		if (imageSelectedBase64?.assets?.[0].base64 !== undefined) {
+			stockImg = `data:image/png;base64,${imageSelectedBase64.assets[0].base64}`;
+		}
 		submitUpdate({
 			...formData,
 			yarnId: params.stockData.id,
 			lastOrderedDate: convertUTCToMYT(formData.lastOrderedDate),
+			image: stockImg,
 		});
+	};
+
+	const onSelectImage = (imageBase64: ImagePickerResponse) => {
+		setImageSelectedBase64(imageBase64);
 	};
 
 	return (
@@ -109,7 +122,12 @@ const UpdateYarnStock = () => {
 				name="lastOrderedDate"
 				title="Last Ordered Date"
 			/>
-			<YJImagePicker imgUrl={params.stockData.imageUrl} />
+			<YJImagePicker
+				imgUrl={
+					imageSelectedBase64?.assets?.[0].uri ?? params.stockData.imageUrl
+				}
+				onImageSelected={onSelectImage}
+			/>
 			<Button
 				color="secondary"
 				containerStyle={styles.submitBtnContainer}

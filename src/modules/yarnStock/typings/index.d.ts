@@ -39,6 +39,7 @@ declare namespace yarnStock {
 		cost: string;
 		reorderLevel: string;
 		lastOrderedDate?: Date;
+		image?: string | null;
 	}
 
 	interface deleteYarnStockPayload {

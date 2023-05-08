@@ -7,16 +7,20 @@ import YJHeader from "../../../layout/YJHeader";
 import ControlledDatePicker from "../../../sharedComponents/inputs/ControlledDatePicker";
 import ControlledSelect from "../../../sharedComponents/inputs/ControlledSelect";
 import ControlledTextInput from "../../../sharedComponents/inputs/ControlledTextInput";
+import YJImagePicker from "../../../sharedComponents/inputs/imagePicker/YJImagePicker";
 import AddYarnStockSchema from "../../../validationSchemas/AddYarnStockSchema";
 import {
 	useAllYarnCategories,
 	useAllYarnColorCategories,
 } from "../../masterData/src/queries/masterDataQueries";
 import { useAddYarnStock } from "../src/queries/yarnStockMutations";
-import YJImagePicker from "../../../sharedComponents/inputs/YJImagePicker";
+import { useState } from "react";
+import { type ImagePickerResponse } from "react-native-image-picker";
 
 const AddYarnStock = () => {
 	const styles = useStyles();
+	const [imageSelectedBase64, setImageSelectedBase64] =
+		useState<ImagePickerResponse | null>(null);
 
 	const {
 		control,
@@ -31,10 +35,19 @@ const AddYarnStock = () => {
 	const { mutate: addYarnStock } = useAddYarnStock();
 
 	const onSubmit: SubmitHandler<yarnStock.addYarnStockPayload> = formData => {
+		let stockImg = null;
+		if (imageSelectedBase64?.assets?.[0].base64 !== undefined) {
+			stockImg = `data:image/png;base64,${imageSelectedBase64.assets[0].base64}`;
+		}
 		addYarnStock({
 			...formData,
 			lastOrderedDate: convertUTCToMYT(formData.lastOrderedDate),
+			image: stockImg,
 		});
+	};
+
+	const onSelectImage = (imageBase64: ImagePickerResponse) => {
+		setImageSelectedBase64(imageBase64);
 	};
 
 	return (
@@ -89,7 +102,10 @@ const AddYarnStock = () => {
 				name="lastOrderedDate"
 				title="Last Ordered Date"
 			/>
-			<YJImagePicker />
+			<YJImagePicker
+				onImageSelected={onSelectImage}
+				imgUrl={imageSelectedBase64?.assets?.[0].uri}
+			/>
 			<Button
 				color="secondary"
 				containerStyle={styles.submitBtnContainer}
