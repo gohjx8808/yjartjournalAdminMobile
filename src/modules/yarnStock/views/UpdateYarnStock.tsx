@@ -28,6 +28,7 @@ const UpdateYarnStock = () => {
 
 	const [imageSelectedBase64, setImageSelectedBase64] =
 		useState<ImagePickerResponse | null>(null);
+	const [isImageUpdated, setIsImageUpdated] = useState(false);
 
 	const {
 		control,
@@ -70,12 +71,22 @@ const UpdateYarnStock = () => {
 			...formData,
 			yarnId: params.stockData.id,
 			lastOrderedDate: convertUTCToMYT(formData.lastOrderedDate),
-			image: stockImg,
+			image: {
+				base64Data: stockImg,
+				isUpdated: isImageUpdated,
+			},
 		});
 	};
 
-	const onSelectImage = (imageBase64: ImagePickerResponse) => {
-		setImageSelectedBase64(imageBase64);
+	const onSelectImage = (response: ImagePickerResponse) => {
+		if (response.didCancel === true) {
+			if (imageSelectedBase64 === null) {
+				setIsImageUpdated(false);
+			}
+		} else {
+			setIsImageUpdated(true);
+			setImageSelectedBase64(response);
+		}
 	};
 
 	return (

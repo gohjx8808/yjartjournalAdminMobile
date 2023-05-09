@@ -46,10 +46,18 @@ declare namespace yarnStock {
 		yarnId: number;
 	}
 
-	type updateYarnStockPayload = addEditYarnStockPayload &
-		deleteYarnStockPayload;
+	interface updateYarnStockPayload
+		extends addEditYarnStockPayload,
+			deleteYarnStockPayload {
+		image: updateStockImagePayload;
+	}
 
 	interface updateYarnStockRouteParams {
 		stockData: yarnStockData;
+	}
+
+	interface updateStockImagePayload {
+		base64Data: string | null;
+		isUpdated: boolean | null;
 	}
 }
