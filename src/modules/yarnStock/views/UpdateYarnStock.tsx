@@ -29,6 +29,7 @@ const UpdateYarnStock = () => {
 	const [imageSelectedBase64, setImageSelectedBase64] =
 		useState<ImagePickerResponse | null>(null);
 	const [isImageUpdated, setIsImageUpdated] = useState(false);
+	const [imgUrl, setImgUrl] = useState<string | null>(null);
 
 	const {
 		control,
@@ -39,6 +40,12 @@ const UpdateYarnStock = () => {
 	} = useForm<yarnStock.addEditYarnStockPayload>({
 		resolver: yupResolver(UpdateYarnStockSchema),
 	});
+
+	useEffect(() => {
+		setImgUrl(
+			imageSelectedBase64?.assets?.[0].uri ?? params.stockData.imageUrl,
+		);
+	}, [imageSelectedBase64, params.stockData]);
 
 	useEffect(() => {
 		const stockData = params.stockData;
@@ -89,6 +96,16 @@ const UpdateYarnStock = () => {
 		}
 	};
 
+	const onRemoveImage = () => {
+		setImgUrl(null);
+		setImageSelectedBase64(null);
+		if (params.stockData.imageUrl !== null) {
+			setIsImageUpdated(true);
+		} else {
+			setIsImageUpdated(false);
+		}
+	};
+
 	return (
 		<YJHeader
 			title="Update Yarn Stock"
@@ -135,10 +152,9 @@ const UpdateYarnStock = () => {
 				title="Last Ordered Date"
 			/>
 			<YJImagePicker
-				imgUrl={
-					imageSelectedBase64?.assets?.[0].uri ?? params.stockData.imageUrl
-				}
+				imgUrl={imgUrl}
 				onImageSelected={onSelectImage}
+				onRemoveImage={onRemoveImage}
 			/>
 			<Button
 				color="secondary"
