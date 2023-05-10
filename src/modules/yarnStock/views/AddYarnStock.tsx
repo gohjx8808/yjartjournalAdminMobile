@@ -46,8 +46,14 @@ const AddYarnStock = () => {
 		});
 	};
 
-	const onSelectImage = (imageBase64: ImagePickerResponse) => {
-		setImageSelectedBase64(imageBase64);
+	const onSelectImage = (response: ImagePickerResponse) => {
+		if (!(response.didCancel === true)) {
+			setImageSelectedBase64(response);
+		}
+	};
+
+	const onRemoveImage = () => {
+		setImageSelectedBase64(null);
 	};
 
 	return (
@@ -104,6 +110,7 @@ const AddYarnStock = () => {
 			/>
 			<YJImagePicker
 				onImageSelected={onSelectImage}
+				onRemoveImage={onRemoveImage}
 				imgUrl={imageSelectedBase64?.assets?.[0].uri}
 			/>
 			<Button

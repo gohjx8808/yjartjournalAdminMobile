@@ -1,4 +1,4 @@
-import { Image, makeStyles } from "@rneui/themed";
+import { Icon, Image, makeStyles } from "@rneui/themed";
 import { View } from "react-native";
 import RoundedButton from "../../button/RoundedButton";
 import ImagePickerOptionsDialog from "./ImagePickerOptionsDialog";
@@ -10,20 +10,24 @@ import {
 	launchImageLibrary,
 	type ImagePickerResponse,
 } from "react-native-image-picker";
+import ClearButton from "../../button/ClearButton";
+import RemoveImageDialog from "./RemoveImageDialog";
 
 interface YJImagePickerProps {
 	imgUrl?: string | null;
 	onImageSelected: (image: ImagePickerResponse) => void;
+	onRemoveImage: () => void;
 }
 
 const YJImagePicker = (props: YJImagePickerProps) => {
-	const { imgUrl, onImageSelected } = props;
+	const { imgUrl, onImageSelected, onRemoveImage } = props;
 	const styles = useStyles();
 
-	const [dialogOpen, setDialogOpen] = useState(false);
+	const [optionsDialogOpen, setOptionsDialogOpen] = useState(false);
+	const [removeDialogOpen, setRemoveDialogOpen] = useState(false);
 
-	const toggleDialog = () => {
-		setDialogOpen(!dialogOpen);
+	const toggleOptionsDialog = () => {
+		setOptionsDialogOpen(!optionsDialogOpen);
 	};
 
 	const onCamera = async () => {
@@ -32,7 +36,7 @@ const YJImagePicker = (props: YJImagePickerProps) => {
 			includeBase64: true,
 		};
 		const photoTaken = await launchCamera(options);
-		toggleDialog();
+		toggleOptionsDialog();
 
 		onImageSelected(photoTaken);
 	};
@@ -46,21 +50,40 @@ const YJImagePicker = (props: YJImagePickerProps) => {
 			maxWidth: 480,
 		};
 		const imageSelected = await launchImageLibrary(options);
-		toggleDialog();
-
+		if (!(imageSelected.didCancel === true)) {
+			toggleOptionsDialog();
+		}
 		onImageSelected(imageSelected);
+	};
+
+	const toggleRemoveDialog = () => {
+		setRemoveDialogOpen(!removeDialogOpen);
+	};
+
+	const onConfirmRemove = () => {
+		onRemoveImage();
+		toggleRemoveDialog();
 	};
 
 	return (
 		<>
 			<View style={styles.centerView}>
 				{imgUrl !== undefined && imgUrl !== null ? (
-					<Image
-						source={{
-							uri: imgUrl,
-						}}
-						containerStyle={styles.imgContainer}
-					/>
+					<View style={styles.imgRootContainer}>
+						<Image
+							source={{
+								uri: imgUrl,
+							}}
+							containerStyle={styles.imgContainer}
+						>
+							<ClearButton
+								containerStyle={styles.removeBtnContainer}
+								onPress={toggleRemoveDialog}
+							>
+								<Icon name="close" />
+							</ClearButton>
+						</Image>
+					</View>
 				) : (
 					<View style={[styles.emptyImgContainer, styles.imgContainer]} />
 				)}
@@ -68,14 +91,19 @@ const YJImagePicker = (props: YJImagePickerProps) => {
 					title="Upload Image"
 					color="warning"
 					containerStyle={styles.uploadBtn}
-					onPress={toggleDialog}
+					onPress={toggleOptionsDialog}
 				/>
 			</View>
 			<ImagePickerOptionsDialog
-				visible={dialogOpen}
-				hideDialog={toggleDialog}
+				visible={optionsDialogOpen}
+				hideDialog={toggleOptionsDialog}
 				onCamera={onCamera}
 				onLibrary={onLibrary}
+			/>
+			<RemoveImageDialog
+				visible={removeDialogOpen}
+				hideDialog={toggleRemoveDialog}
+				onConfirm={onConfirmRemove}
 			/>
 		</>
 	);
@@ -100,5 +128,18 @@ const useStyles = makeStyles(theme => ({
 		borderWidth: 0.5,
 		marginBottom: 20,
 		marginTop: 10,
+	},
+	removeBtnContainer: {
+		position: "absolute",
+		right: 10,
+		top: 10,
+		backgroundColor: theme.colors.white,
+		borderRadius: 30,
+		opacity: 0.5,
+	},
+	imgRootContainer: {
+		flexDirection: "row",
+		justifyContent: "center",
+		alignItems: "center",
 	},
 }));
