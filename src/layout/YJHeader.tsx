@@ -3,8 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Button, Header, Icon, makeStyles, useTheme } from "@rneui/themed";
 import type { HeaderProps } from "@rneui/themed";
 import React, { type FC, type PropsWithChildren } from "react";
-import type { ViewStyle } from "react-native";
-import { ScrollView } from "react-native";
+import { ScrollView, Platform, type ViewStyle } from "react-native";
 import type { DrawerParamList } from "../modules/router/MainRouter";
 import YJText from "../sharedComponents/text/YJText";
 
@@ -31,8 +30,8 @@ const YJHeader: FC<PropsWithChildren & YJHeaderProps> = props => {
 		...rest
 	} = props;
 	const { theme } = useTheme();
-	const styles = useStyles();
 	const insets = useSafeAreaInsets();
+	const styles = useStyles();
 	const navigation = useNavigation<DrawerNavigationProp<DrawerParamList>>();
 
 	return (
@@ -66,6 +65,7 @@ const YJHeader: FC<PropsWithChildren & YJHeaderProps> = props => {
 				contentContainerStyle={[
 					customScrollViewContentContainerStyle,
 					scrollViewContentCenter && styles.centerScrollviewContent,
+					{ paddingBottom: Platform.OS === "android" ? 50 + insets.bottom : 0 },
 				]}
 				contentInsetAdjustmentBehavior="automatic"
 				contentInset={{ bottom: insets.bottom }}
