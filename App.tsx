@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { YarnStockFilterContextProvider } from "./src/context/YarnStockFilterContext";
 import StatusDialog from "./src/sharedComponents/dialog/StatusDialog";
 import { StatusDialogContextProvider } from "./src/context/StatusDialogContext";
+import { hide } from "react-native-bootsplash";
 
 const App = (): JSX.Element => {
 	const theme = createTheme({
@@ -29,7 +30,11 @@ const App = (): JSX.Element => {
 				<QueryClientProvider client={client}>
 					<YarnStockFilterContextProvider>
 						<StatusDialogContextProvider>
-							<NavigationContainer>
+							<NavigationContainer
+								onReady={async () => {
+									await hide();
+								}}
+							>
 								<MainRouter />
 								<StatusDialog />
 							</NavigationContainer>
