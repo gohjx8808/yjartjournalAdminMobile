@@ -30,26 +30,25 @@ const YJImagePicker = (props: YJImagePickerProps) => {
 		setOptionsDialogOpen(!optionsDialogOpen);
 	};
 
+	const pictureOptions: CameraOptions | ImageLibraryOptions = {
+		mediaType: "photo",
+		includeBase64: true,
+		quality: 0.3,
+		maxHeight: 480,
+		maxWidth: 480,
+	};
+
 	const onCamera = async () => {
-		const options: CameraOptions = {
-			mediaType: "photo",
-			includeBase64: true,
-		};
-		const photoTaken = await launchCamera(options);
-		toggleOptionsDialog();
+		const photoTaken = await launchCamera(pictureOptions);
+		if (!(photoTaken.didCancel === true)) {
+			toggleOptionsDialog();
+		}
 
 		onImageSelected(photoTaken);
 	};
 
 	const onLibrary = async () => {
-		const options: ImageLibraryOptions = {
-			mediaType: "photo",
-			includeBase64: true,
-			quality: 0.3,
-			maxHeight: 480,
-			maxWidth: 480,
-		};
-		const imageSelected = await launchImageLibrary(options);
+		const imageSelected = await launchImageLibrary(pictureOptions);
 		if (!(imageSelected.didCancel === true)) {
 			toggleOptionsDialog();
 		}

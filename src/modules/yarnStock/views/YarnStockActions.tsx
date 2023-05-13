@@ -12,6 +12,8 @@ const YarnStockActions = (props: YarnStockActionsProps) => {
 	const insets = useSafeAreaInsets();
 	const styles = useStyles();
 
+	const bottomInsets = insets.bottom === 0 ? 20 : insets.bottom;
+
 	return (
 		<BottomSheet {...props}>
 			<ListItem
@@ -28,7 +30,7 @@ const YarnStockActions = (props: YarnStockActionsProps) => {
 				onPress={onDelete}
 				containerStyle={[
 					styles.listItemContainer,
-					{ paddingBottom: insets.bottom },
+					{ paddingBottom: bottomInsets },
 				]}
 			>
 				<Icon name="delete" />

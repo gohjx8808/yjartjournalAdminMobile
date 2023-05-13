@@ -27,7 +27,6 @@ const YarnStockCard = (props: YarnStockCardProps) => {
 				<Card.Title>{stock.detailedColor}</Card.Title>
 				<ClearButton
 					containerStyle={styles.deleteBtnContainer}
-					style={styles.deleteBtn}
 					onPress={() => {
 						onSelectAction(stock);
 					}}
@@ -122,8 +121,6 @@ const useStyles = makeStyles(theme => ({
 	deleteBtnContainer: {
 		right: 0,
 		position: "absolute",
-	},
-	deleteBtn: {
-		marginBottom: 15,
+		paddingBottom: 15,
 	},
 }));
