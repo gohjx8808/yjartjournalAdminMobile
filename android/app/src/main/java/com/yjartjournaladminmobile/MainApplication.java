@@ -1,4 +1,4 @@
-package com.yjartjournaladminmobile;
+package com.yjartjournal.adminmobile;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

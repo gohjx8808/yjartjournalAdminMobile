@@ -1,4 +1,4 @@
-package com.yjartjournaladminmobile;
+package com.yjartjournal.adminmobile;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

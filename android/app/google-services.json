@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "329840334591",
+    "project_id": "yjartjournal-f3e19",
+    "storage_bucket": "yjartjournal-f3e19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:329840334591:android:62e5425613951fe9b61eca",
+        "android_client_info": {
+          "package_name": "com.yjartjournal.adminmobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "329840334591-1p2jobj5smj79a1kml21lonurn7u5db6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClY8i4u3W3QMsPLgUw7EZhhmGao6vzLP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "329840334591-1p2jobj5smj79a1kml21lonurn7u5db6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "329840334591-ep0v5krp9134avls9jbveasqeiasedki.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.yjartjournal.adminMobile"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
