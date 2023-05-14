@@ -67,3 +67,4 @@ yarn-error.log
 
 *.jks
 /android/app/release
+/android/app/google-services.json
