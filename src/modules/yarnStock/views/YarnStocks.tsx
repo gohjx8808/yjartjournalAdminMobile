@@ -13,6 +13,7 @@ import YarnStockActions from "./YarnStockActions";
 import { Card, Skeleton, makeStyles } from "@rneui/themed";
 import YJText from "../../../sharedComponents/text/YJText";
 import LinearGradient from "react-native-linear-gradient";
+import EnlargeImageDialog from "../../../sharedComponents/dialog/EnlargeImageDialog";
 
 const YarnStocks = () => {
 	const navigation =
@@ -23,6 +24,7 @@ const YarnStocks = () => {
 	const [speedDialOpen, setSpeedDialOpen] = useState(false);
 	const [deleteYarnStockDialogOpen, setDeleteYarnStockDialogOpen] =
 		useState(false);
+	const [enlargeImageDialogOpen, setEnlargeImageDialogOpen] = useState(false);
 	const [selectedYarnStock, setSelectedYarnStock] =
 		useState<yarnStock.yarnStockData | null>(null);
 	const [actionBottomSheet, setActionBottomSheet] = useState(false);
@@ -69,6 +71,15 @@ const YarnStocks = () => {
 		toggleDeleteYarnStockDialog();
 	};
 
+	const toggleEnlargeImageDialog = () => {
+		setEnlargeImageDialogOpen(!enlargeImageDialogOpen);
+	};
+
+	const onImage = (stock: yarnStock.yarnStockData) => {
+		setSelectedYarnStock(stock);
+		toggleEnlargeImageDialog();
+	};
+
 	return (
 		<>
 			<YJHeader title="Yarn Stocks" scrollViewContentCenter>
@@ -84,6 +95,7 @@ const YarnStocks = () => {
 							stock={stock}
 							key={stock.id}
 							onSelectAction={onSelectAction}
+							onImage={onImage}
 						/>
 					))
 				) : (
@@ -114,6 +126,13 @@ const YarnStocks = () => {
 					visible={deleteYarnStockDialogOpen}
 					stock={selectedYarnStock}
 					hideDialog={toggleDeleteYarnStockDialog}
+				/>
+			)}
+			{selectedYarnStock?.imageUrl != null && (
+				<EnlargeImageDialog
+					visible={enlargeImageDialogOpen}
+					hideDialog={toggleEnlargeImageDialog}
+					imgUrl={selectedYarnStock.imageUrl}
 				/>
 			)}
 		</>

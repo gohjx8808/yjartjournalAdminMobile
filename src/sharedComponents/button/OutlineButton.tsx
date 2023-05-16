@@ -6,14 +6,14 @@ export interface OutlineButtonProps extends ButtonProps {
 }
 
 const OutlineButton = (props: OutlineButtonProps) => {
-	const { children, style } = props;
+	const { children, buttonStyle } = props;
 	const styles = useStyles(props);
 
 	return (
 		<Button
 			{...props}
 			type="outline"
-			style={[style, styles.buttonStyle]}
+			buttonStyle={[styles.buttonStyle, buttonStyle]}
 			titleStyle={styles.buttonTitleStyle}
 		>
 			{children}

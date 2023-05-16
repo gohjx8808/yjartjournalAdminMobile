@@ -1,5 +1,5 @@
 import { Card, Icon, makeStyles } from "@rneui/themed";
-import { View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { formatCurrency } from "../../../helpers/helpers";
 import ClearButton from "../../../sharedComponents/button/ClearButton";
 import SpaceBetweenText from "../../../sharedComponents/text/SpaceBetweenText";
@@ -9,10 +9,11 @@ import { useUpdateYarnStockQuantity } from "../src/queries/yarnStockMutations";
 interface YarnStockCardProps {
 	stock: yarnStock.yarnStockData;
 	onSelectAction: (selected: yarnStock.yarnStockData) => void;
+	onImage: (selected: yarnStock.yarnStockData) => void;
 }
 
 const YarnStockCard = (props: YarnStockCardProps) => {
-	const { stock, onSelectAction } = props;
+	const { stock, onSelectAction, onImage } = props;
 	const styles = useStyles();
 
 	const { mutate } = useUpdateYarnStockQuantity();
@@ -36,12 +37,18 @@ const YarnStockCard = (props: YarnStockCardProps) => {
 			</View>
 			<Card.Divider />
 			{stock.imageUrl !== null && (
-				<Card.Image
-					containerStyle={{ marginBottom: 10 }}
-					source={{
-						uri: stock.imageUrl,
+				<TouchableOpacity
+					onPress={() => {
+						onImage(stock);
 					}}
-				/>
+				>
+					<Card.Image
+						containerStyle={{ marginBottom: 10 }}
+						source={{
+							uri: stock.imageUrl,
+						}}
+					/>
+				</TouchableOpacity>
 			)}
 			<SpaceBetweenText
 				frontText="Cost per Item"

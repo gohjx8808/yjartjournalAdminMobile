@@ -7,8 +7,8 @@ const RoundedButton = (props: ButtonProps): JSX.Element => {
 		<Button
 			{...props}
 			buttonStyle={[
-				props.buttonStyle,
 				{ minHeight: 50, minWidth: "40%", borderRadius: 10 },
+				props.buttonStyle,
 			]}
 		/>
 	);
