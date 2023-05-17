@@ -32,6 +32,7 @@ const EnlargeImageDialog = (props: EnlargeImageDialogProps) => {
 			overlayStyle={styles.overlay}
 			isVisible={visible}
 			onBackdropPress={hideDialog}
+			backdropStyle={styles.solidBackdrop}
 		>
 			<Image
 				source={{
@@ -54,6 +55,9 @@ const useStyles = makeStyles((_theme, imageDimension: imageDimensionData) => ({
 	overlay: {
 		backgroundColor: "transparent",
 		alignItems: "center",
+	},
+	solidBackdrop: {
+		backgroundColor: "black",
 	},
 	closeBtn: {
 		borderRadius: 50,
