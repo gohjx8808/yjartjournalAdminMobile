@@ -1,7 +1,8 @@
 import { Icon, Image, Overlay, makeStyles } from "@rneui/themed";
-import { useEffect, useState } from "react";
-import { Dimensions } from "react-native";
+import { useEffect, useRef, useState } from "react";
+import { Animated, Dimensions, View } from "react-native";
 import OutlineButton from "../button/OutlineButton";
+import YJZoomView from "../layout/YJZoomView";
 
 interface imageDimensionData {
 	width: number;
@@ -18,6 +19,7 @@ const EnlargeImageDialog = (props: EnlargeImageDialogProps) => {
 		width: 0,
 		height: 0,
 	});
+	const scale = useRef(new Animated.Value(1)).current;
 
 	const styles = useStyles(imageDimension);
 
@@ -33,15 +35,19 @@ const EnlargeImageDialog = (props: EnlargeImageDialogProps) => {
 			isVisible={visible}
 			onBackdropPress={hideDialog}
 			backdropStyle={styles.solidBackdrop}
+			animationType="fade"
 		>
-			<Image
-				source={{
-					uri: imgUrl,
-				}}
-				containerStyle={styles.imgContainer}
-				resizeMode="contain"
-				style={styles.img}
-			/>
+			<View style={styles.imgContainer}>
+				<YJZoomView scale={scale}>
+					<Animated.Image
+						source={{
+							uri: imgUrl,
+						}}
+						resizeMode="contain"
+						style={[styles.img, { transform: [{ scale }] }]}
+					/>
+				</YJZoomView>
+			</View>
 			<OutlineButton buttonStyle={styles.closeBtn} onPress={hideDialog}>
 				<Icon name="close" color="white" />
 			</OutlineButton>
@@ -70,6 +76,8 @@ const useStyles = makeStyles((_theme, imageDimension: imageDimensionData) => ({
 		maxWidth: Dimensions.get("screen").width,
 	},
 	imgContainer: {
-		maxWidth: Dimensions.get("screen").width,
+		flex: 1,
+		alignItems: "center",
+		justifyContent: "center",
 	},
 }));
