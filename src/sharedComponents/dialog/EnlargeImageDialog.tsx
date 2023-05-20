@@ -61,7 +61,7 @@ const useStyles = makeStyles(() => ({
 		borderWidth: 1.5,
 	},
 	imgContainer: {
-		flex: 1,
+		flex: 0.9,
 		alignItems: "center",
 		justifyContent: "center",
 	},
