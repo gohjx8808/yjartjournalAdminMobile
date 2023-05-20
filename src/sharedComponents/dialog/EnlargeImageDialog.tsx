@@ -1,13 +1,8 @@
 import { Icon, Image, Overlay, makeStyles } from "@rneui/themed";
-import { useEffect, useRef, useState } from "react";
-import { Animated, Dimensions, View } from "react-native";
+import { useEffect, useState } from "react";
+import { View } from "react-native";
 import OutlineButton from "../button/OutlineButton";
-import YJZoomView from "../layout/YJZoomView";
-
-interface imageDimensionData {
-	width: number;
-	height: number;
-}
+import YJZoomableImage from "../layout/YJZoomableImage";
 
 interface EnlargeImageDialogProps extends dialogProps.commonDialogProps {
 	imgUrl: string;
@@ -15,13 +10,12 @@ interface EnlargeImageDialogProps extends dialogProps.commonDialogProps {
 
 const EnlargeImageDialog = (props: EnlargeImageDialogProps) => {
 	const { visible, hideDialog, imgUrl } = props;
-	const [imageDimension, setImageDimension] = useState<imageDimensionData>({
-		width: 0,
-		height: 0,
-	});
-	const scale = useRef(new Animated.Value(1)).current;
-
-	const styles = useStyles(imageDimension);
+	const [imageDimension, setImageDimension] =
+		useState<dialogProps.imageDimensionData>({
+			width: 0,
+			height: 0,
+		});
+	const styles = useStyles();
 
 	useEffect(() => {
 		Image.getSize(imgUrl, (width, height) => {
@@ -38,15 +32,11 @@ const EnlargeImageDialog = (props: EnlargeImageDialogProps) => {
 			animationType="fade"
 		>
 			<View style={styles.imgContainer}>
-				<YJZoomView scale={scale}>
-					<Animated.Image
-						source={{
-							uri: imgUrl,
-						}}
-						resizeMode="contain"
-						style={[styles.img, { transform: [{ scale }] }]}
-					/>
-				</YJZoomView>
+				<YJZoomableImage
+					source={{ uri: imgUrl }}
+					resizeMode="contain"
+					imageDimension={imageDimension}
+				/>
 			</View>
 			<OutlineButton buttonStyle={styles.closeBtn} onPress={hideDialog}>
 				<Icon name="close" color="white" />
@@ -57,7 +47,7 @@ const EnlargeImageDialog = (props: EnlargeImageDialogProps) => {
 
 export default EnlargeImageDialog;
 
-const useStyles = makeStyles((_theme, imageDimension: imageDimensionData) => ({
+const useStyles = makeStyles(() => ({
 	overlay: {
 		backgroundColor: "transparent",
 		alignItems: "center",
@@ -69,11 +59,6 @@ const useStyles = makeStyles((_theme, imageDimension: imageDimensionData) => ({
 		borderRadius: 50,
 		width: "50%",
 		borderWidth: 1.5,
-	},
-	img: {
-		width: imageDimension.width,
-		height: imageDimension.height,
-		maxWidth: Dimensions.get("screen").width,
 	},
 	imgContainer: {
 		flex: 1,

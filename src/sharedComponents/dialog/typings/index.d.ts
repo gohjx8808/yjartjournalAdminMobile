@@ -3,4 +3,9 @@ declare namespace dialogProps {
 		visible: boolean;
 		hideDialog: () => void;
 	}
+
+	interface imageDimensionData {
+		width: number;
+		height: number;
+	}
 }
