@@ -8,7 +8,7 @@ import Animated, {
 	useAnimatedGestureHandler,
 	useAnimatedStyle,
 	useSharedValue,
-	withTiming,
+	withSpring,
 } from "react-native-reanimated";
 
 interface YJZoomableImageProps extends ImageProps {
@@ -19,7 +19,8 @@ const AnimatedImage = Animated.createAnimatedComponent(Image);
 
 const YJZoomableImage = (props: YJZoomableImageProps) => {
 	const { style, imageDimension, ...rest } = props;
-	const scale = useSharedValue(1);
+	const previousScale = useSharedValue(1);
+	const currentScale = useSharedValue(1);
 	const focalX = useSharedValue(0);
 	const focalY = useSharedValue(0);
 
@@ -28,13 +29,17 @@ const YJZoomableImage = (props: YJZoomableImageProps) => {
 	const handlePinch =
 		useAnimatedGestureHandler<PinchGestureHandlerGestureEvent>({
 			onActive: event => {
-				scale.value = event.scale;
-				focalX.value = event.focalX;
-				focalY.value = event.focalY;
+				if (previousScale.value * event.scale > 0.5) {
+					currentScale.value = event.scale;
+					focalX.value = event.focalX;
+					focalY.value = event.focalY;
+				}
 			},
-			onEnd: event => {
-				if (event.scale < 1) {
-					scale.value = withTiming(1);
+			onEnd: () => {
+				previousScale.value *= currentScale.value;
+				currentScale.value = 1;
+				if (previousScale.value < 1) {
+					previousScale.value = withSpring(1);
 				}
 			},
 		});
@@ -46,11 +51,12 @@ const YJZoomableImage = (props: YJZoomableImageProps) => {
 				{ translateY: focalY.value },
 				{ translateX: -imageDimension.width / 2 },
 				{ translateY: -imageDimension.height / 2 },
-				{ scale: scale.value },
+				{ scale: currentScale.value },
 				{ translateX: -focalX.value },
 				{ translateY: -focalY.value },
 				{ translateX: imageDimension.width / 2 },
 				{ translateY: imageDimension.height / 2 },
+				{ scale: previousScale.value },
 			],
 		};
 	});
