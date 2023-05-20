@@ -52,11 +52,11 @@ const YJZoomableImage = (props: YJZoomableImageProps) => {
 				{ translateX: -imageDimension.width / 2 },
 				{ translateY: -imageDimension.height / 2 },
 				{ scale: currentScale.value },
+				{ scale: previousScale.value },
 				{ translateX: -focalX.value },
 				{ translateY: -focalY.value },
 				{ translateX: imageDimension.width / 2 },
 				{ translateY: imageDimension.height / 2 },
-				{ scale: previousScale.value },
 			],
 		};
 	});
