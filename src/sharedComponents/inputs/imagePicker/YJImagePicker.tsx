@@ -33,9 +33,9 @@ const YJImagePicker = (props: YJImagePickerProps) => {
 	const pictureOptions: CameraOptions | ImageLibraryOptions = {
 		mediaType: "photo",
 		includeBase64: true,
-		quality: 0.3,
-		maxHeight: 480,
-		maxWidth: 480,
+		quality: 0.5,
+		maxHeight: 720,
+		maxWidth: 720,
 	};
 
 	const onCamera = async () => {
