@@ -16,10 +16,11 @@ const YarnStockCard = (props: YarnStockCardProps) => {
 	const { stock, onSelectAction, onImage } = props;
 	const styles = useStyles();
 
-	const { mutate } = useUpdateYarnStockQuantity();
+	const { mutate: updateQuantity, isLoading: updateQuantityLoading } =
+		useUpdateYarnStockQuantity();
 
 	const onModifyQuantity = (modifiedQuantity: number) => {
-		mutate({ quantity: modifiedQuantity, yarnId: stock.id });
+		updateQuantity({ quantity: modifiedQuantity, yarnId: stock.id });
 	};
 
 	return (
@@ -83,23 +84,29 @@ const YarnStockCard = (props: YarnStockCardProps) => {
 				In Stock Quantity
 			</YJText>
 			<View style={styles.quantityActionContainer}>
-				<ClearButton
-					themeColor="secondary"
-					onPress={() => {
-						onModifyQuantity(stock.inStockQuantity - 1);
-					}}
-				>
-					-
-				</ClearButton>
-				<YJText>{stock.inStockQuantity}</YJText>
-				<ClearButton
-					themeColor="secondary"
-					onPress={() => {
-						onModifyQuantity(stock.inStockQuantity + 1);
-					}}
-				>
-					+
-				</ClearButton>
+				{updateQuantityLoading ? (
+					<ClearButton loading />
+				) : (
+					<>
+						<ClearButton
+							themeColor="secondary"
+							onPress={() => {
+								onModifyQuantity(stock.inStockQuantity - 1);
+							}}
+						>
+							-
+						</ClearButton>
+						<YJText>{stock.inStockQuantity}</YJText>
+						<ClearButton
+							themeColor="secondary"
+							onPress={() => {
+								onModifyQuantity(stock.inStockQuantity + 1);
+							}}
+						>
+							+
+						</ClearButton>
+					</>
+				)}
 			</View>
 		</Card>
 	);

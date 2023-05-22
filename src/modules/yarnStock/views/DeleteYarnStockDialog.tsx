@@ -10,10 +10,10 @@ interface DeleteYarnStockDialogProps extends dialogProps.commonDialogProps {
 const DeleteYarnStockDialog = (props: DeleteYarnStockDialogProps) => {
 	const { visible, hideDialog, stock } = props;
 
-	const { mutate: submitDelete } = useDeleteYarnStock();
+	const { mutate: submitDelete, isLoading: deleteLoading } =
+		useDeleteYarnStock(hideDialog);
 
 	const onSubmitDelete = () => {
-		hideDialog();
 		submitDelete({ yarnId: stock.id });
 	};
 
@@ -27,8 +27,17 @@ const DeleteYarnStockDialog = (props: DeleteYarnStockDialogProps) => {
 			</YJText>
 			<YJText>This cannot be undone!</YJText>
 			<Dialog.Actions>
-				<YJDialogButton title="Confirm" onPress={onSubmitDelete} />
-				<YJDialogButton title="Cancel" onPress={hideDialog} />
+				<YJDialogButton
+					title="Confirm"
+					onPress={onSubmitDelete}
+					disabled={deleteLoading}
+					loading={deleteLoading}
+				/>
+				<YJDialogButton
+					title="Cancel"
+					onPress={hideDialog}
+					disabled={deleteLoading}
+				/>
 			</Dialog.Actions>
 		</Dialog>
 	);

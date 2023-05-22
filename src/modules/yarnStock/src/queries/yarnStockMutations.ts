@@ -92,13 +92,14 @@ export const useUpdateYarnStock = () => {
 	});
 };
 
-export const useDeleteYarnStock = () => {
+export const useDeleteYarnStock = (hideDialog: () => void) => {
 	const { setStatusDialogData } = useContext(StatusDialogContext);
 	const { refetch } = useAllYarnStock();
 
 	return useMutation(["deleteYarnStock"], postDeleteYarnStock, {
 		onSuccess: async () => {
 			await refetch();
+			hideDialog();
 			setStatusDialogData({
 				title: "Delete Yarn Stock",
 				message: "The yarn stock had been deleted!",
@@ -107,6 +108,7 @@ export const useDeleteYarnStock = () => {
 			});
 		},
 		onError: (err: AxiosError<YJApiError>) => {
+			hideDialog();
 			setStatusDialogData({
 				title: "Delete Yarn Stock",
 				message:
