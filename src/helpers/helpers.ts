@@ -16,3 +16,14 @@ export const convertUTCToMYT = (date?: Date) => {
 
 	return date;
 };
+
+export const getGreetings = () => {
+	const timeNow = new Date().getHours();
+	if (timeNow < 12) {
+		return "Good morning";
+	} else if (timeNow < 19) {
+		return "Good afternoon";
+	}
+
+	return "Good evening";
+};

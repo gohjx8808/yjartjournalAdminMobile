@@ -52,11 +52,12 @@ const MainRouter = (): JSX.Element => {
 	return (
 		<Drawer.Navigator
 			useLegacyImplementation={true}
-			initialRouteName={routeNames.YARN_STOCKS}
+			initialRouteName={routeNames.DASHBOARD}
 			screenOptions={{
 				headerShown: false,
 				drawerActiveTintColor: theme.colors.secondary,
 				drawerActiveBackgroundColor: theme.colors.primary,
+				lazy: true,
 			}}
 		>
 			<Drawer.Screen name={routeNames.DASHBOARD} component={Dashboard} />
