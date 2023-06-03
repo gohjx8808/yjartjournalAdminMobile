@@ -2,15 +2,16 @@ import { Button, Icon, ListItem, makeStyles, useTheme } from "@rneui/themed";
 import { useState } from "react";
 import { View } from "react-native";
 import YJHeader from "../../../layout/YJHeader";
+import YJLoadingSkeleton from "../../../sharedComponents/YJLoadingSkeleton";
 import YJText from "../../../sharedComponents/text/YJText";
 import {
 	useAllYarnCategories,
 	useAllYarnColorCategories,
 } from "../src/queries/masterDataQueries";
-import MasterDataListItem from "./MasterDataListItem";
 import AddEditMasterDataDialog from "./AddEditMasterDataDialog";
 import DeleteMasterDataDialog from "./DeleteMasterDataDialog";
 import MasterDataCategoryDialog from "./MasterDataCategoryDialog";
+import MasterDataListItem from "./MasterDataListItem";
 
 const MasterData = () => {
 	const [yarnCategoryExpand, setYarnCategoryExpand] = useState(true);
@@ -27,8 +28,18 @@ const MasterData = () => {
 	const styles = useStyles();
 	const { theme } = useTheme();
 
-	const { data: yarnCategories } = useAllYarnCategories();
-	const { data: yarnColorCategories } = useAllYarnColorCategories();
+	const {
+		data: yarnCategories,
+		isLoading: yarnCategoriesLoading,
+		refetch: yarnCategoriesRefetch,
+		isRefetching: yarnCategoriesRefetching,
+	} = useAllYarnCategories();
+	const {
+		data: yarnColorCategories,
+		isLoading: yarnColorCategoriesLoading,
+		refetch: yarnColorCategoriesRefetch,
+		isRefetching: yarnColorCategoriesRefetching,
+	} = useAllYarnColorCategories();
 
 	const toggleYarnCategoryExpand = () => {
 		setYarnCategoryExpand(!yarnCategoryExpand);
@@ -75,6 +86,11 @@ const MasterData = () => {
 		toggleAddEditDialogOpen();
 	};
 
+	const onRefresh = async () => {
+		await yarnCategoriesRefetch();
+		await yarnColorCategoriesRefetch();
+	};
+
 	return (
 		<>
 			<YJHeader
@@ -84,6 +100,8 @@ const MasterData = () => {
 						<Icon name="add" color={theme.colors.secondary} />
 					</Button>
 				}
+				onRefresh={onRefresh}
+				refreshing={yarnCategoriesRefetching || yarnColorCategoriesRefetching}
 			>
 				<View style={styles.parentContainer}>
 					<ListItem.Accordion
@@ -98,18 +116,24 @@ const MasterData = () => {
 						isExpanded={yarnCategoryExpand}
 						onPress={toggleYarnCategoryExpand}
 					>
-						{yarnCategories?.map(category => (
-							<MasterDataListItem
-								key={category.id}
-								item={category}
-								onEdit={() => {
-									onEdit(category, "Yarn Category");
-								}}
-								onDelete={() => {
-									onDelete(category, "Yarn Category");
-								}}
-							/>
-						))}
+						{yarnCategoriesLoading ? (
+							<ListItem bottomDivider>
+								<YJLoadingSkeleton style={styles.loadingSkeleton} />
+							</ListItem>
+						) : (
+							yarnCategories?.map(category => (
+								<MasterDataListItem
+									key={category.id}
+									item={category}
+									onEdit={() => {
+										onEdit(category, "Yarn Category");
+									}}
+									onDelete={() => {
+										onDelete(category, "Yarn Category");
+									}}
+								/>
+							))
+						)}
 					</ListItem.Accordion>
 					<ListItem.Accordion
 						containerStyle={[
@@ -126,18 +150,24 @@ const MasterData = () => {
 						isExpanded={yarnColorCategoryExpand}
 						onPress={toggleYarnColorCategoryExpand}
 					>
-						{yarnColorCategories?.map(colorCategory => (
-							<MasterDataListItem
-								key={colorCategory.id}
-								item={colorCategory}
-								onEdit={() => {
-									onEdit(colorCategory, "Yarn Color Category");
-								}}
-								onDelete={() => {
-									onDelete(colorCategory, "Yarn Color Category");
-								}}
-							/>
-						))}
+						{yarnColorCategoriesLoading ? (
+							<ListItem bottomDivider>
+								<YJLoadingSkeleton style={styles.loadingSkeleton} />
+							</ListItem>
+						) : (
+							yarnColorCategories?.map(colorCategory => (
+								<MasterDataListItem
+									key={colorCategory.id}
+									item={colorCategory}
+									onEdit={() => {
+										onEdit(colorCategory, "Yarn Color Category");
+									}}
+									onDelete={() => {
+										onDelete(colorCategory, "Yarn Color Category");
+									}}
+								/>
+							))
+						)}
 					</ListItem.Accordion>
 				</View>
 			</YJHeader>
@@ -175,5 +205,8 @@ const useStyles = makeStyles(theme => ({
 	},
 	notFirstAccordionContainer: {
 		marginTop: 20,
+	},
+	loadingSkeleton: {
+		height: 100,
 	},
 }));

@@ -1,19 +1,19 @@
 import type { NavigationProp } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
+import { Card, makeStyles } from "@rneui/themed";
 import React, { useState } from "react";
 import YJHeader from "../../../layout/YJHeader";
+import YJLoadingSkeleton from "../../../sharedComponents/YJLoadingSkeleton";
+import EnlargeImageDialog from "../../../sharedComponents/dialog/EnlargeImageDialog";
+import YJText from "../../../sharedComponents/text/YJText";
 import type { YarnStockNavigatorParamList } from "../../router/MainRouter";
 import routeNames from "../../router/routeNames";
 import { useAllYarnStock } from "../src/queries/yarnStockQueries";
 import DeleteYarnStockDialog from "./DeleteYarnStockDialog";
+import YarnStockActions from "./YarnStockActions";
 import YarnStockCard from "./YarnStockCard";
 import YarnStockFAB from "./YarnStockFAB";
 import YarnStockFilterDialog from "./YarnStockFilterDialog";
-import YarnStockActions from "./YarnStockActions";
-import { Card, Skeleton, makeStyles } from "@rneui/themed";
-import YJText from "../../../sharedComponents/text/YJText";
-import LinearGradient from "react-native-linear-gradient";
-import EnlargeImageDialog from "../../../sharedComponents/dialog/EnlargeImageDialog";
 
 const YarnStocks = () => {
 	const navigation =
@@ -29,7 +29,12 @@ const YarnStocks = () => {
 		useState<yarnStock.yarnStockData | null>(null);
 	const [actionBottomSheet, setActionBottomSheet] = useState(false);
 
-	const { data: yarnStock, isLoading: yarnStockLoading } = useAllYarnStock();
+	const {
+		data: yarnStock,
+		isLoading: yarnStockLoading,
+		refetch: yarnStockRefetch,
+		isRefetching: yarnStockRefetching,
+	} = useAllYarnStock();
 
 	const toggleFilterDialog = () => {
 		setFilterDialog(!filterDialog);
@@ -82,13 +87,14 @@ const YarnStocks = () => {
 
 	return (
 		<>
-			<YJHeader title="Yarn Stocks" scrollViewContentCenter>
+			<YJHeader
+				title="Yarn Stocks"
+				scrollViewContentCenter
+				onRefresh={yarnStockRefetch}
+				refreshing={yarnStockRefetching}
+			>
 				{yarnStockLoading ? (
-					<Skeleton
-						LinearGradientComponent={LinearGradient}
-						animation="wave"
-						style={styles.cardSkeleton}
-					/>
+					<YJLoadingSkeleton style={styles.cardSkeleton} />
 				) : yarnStock !== undefined && yarnStock.length > 0 ? (
 					yarnStock.map(stock => (
 						<YarnStockCard

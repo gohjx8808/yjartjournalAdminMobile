@@ -1,7 +1,7 @@
-import { Card, Skeleton, makeStyles } from "@rneui/themed";
-import YJText from "../../../sharedComponents/text/YJText";
+import { Card, makeStyles } from "@rneui/themed";
 import { type TextStyle } from "react-native";
-import LinearGradient from "react-native-linear-gradient";
+import YJLoadingSkeleton from "../../../sharedComponents/YJLoadingSkeleton";
+import YJText from "../../../sharedComponents/text/YJText";
 
 interface StatisticsCardProps {
 	title: string;
@@ -20,11 +20,7 @@ const StatisticsCard = (props: StatisticsCardProps) => {
 				{title}
 			</Card.Title>
 			{loading ? (
-				<Skeleton
-					LinearGradientComponent={LinearGradient}
-					animation="wave"
-					style={styles.contentSkeleton}
-				/>
+				<YJLoadingSkeleton style={styles.contentSkeleton} />
 			) : (
 				<YJText h1 center style={contentStyle}>
 					{content}
