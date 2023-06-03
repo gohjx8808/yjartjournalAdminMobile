@@ -3,7 +3,12 @@ import { useNavigation } from "@react-navigation/native";
 import { Button, Header, Icon, makeStyles, useTheme } from "@rneui/themed";
 import type { HeaderProps } from "@rneui/themed";
 import React, { type FC, type PropsWithChildren } from "react";
-import { ScrollView, Platform, type ViewStyle } from "react-native";
+import {
+	ScrollView,
+	Platform,
+	type ViewStyle,
+	RefreshControl,
+} from "react-native";
 import type { DrawerParamList } from "../modules/router/MainRouter";
 import YJText from "../sharedComponents/text/YJText";
 
@@ -18,6 +23,8 @@ interface YJHeaderProps
 	back?: boolean;
 	scrollViewContentCenter?: boolean;
 	customScrollViewContentContainerStyle?: ViewStyle;
+	refreshing?: boolean;
+	onRefresh?: () => void;
 }
 
 const YJHeader: FC<PropsWithChildren & YJHeaderProps> = props => {
@@ -27,6 +34,8 @@ const YJHeader: FC<PropsWithChildren & YJHeaderProps> = props => {
 		children,
 		scrollViewContentCenter = false,
 		customScrollViewContentContainerStyle = {},
+		onRefresh,
+		refreshing,
 		...rest
 	} = props;
 	const { theme } = useTheme();
@@ -69,6 +78,12 @@ const YJHeader: FC<PropsWithChildren & YJHeaderProps> = props => {
 				]}
 				contentInsetAdjustmentBehavior="automatic"
 				contentInset={{ bottom: insets.bottom }}
+				refreshControl={
+					<RefreshControl
+						refreshing={refreshing ?? false}
+						onRefresh={onRefresh}
+					/>
+				}
 			>
 				{children}
 			</ScrollView>
