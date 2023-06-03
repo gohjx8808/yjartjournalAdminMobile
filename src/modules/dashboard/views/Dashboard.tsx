@@ -13,9 +13,14 @@ import {
 const Dashboard = () => {
 	const styles = useStyes();
 
-	const { data: yarnStockOverview } = useYarnStockOverview();
-	const { data: yarnCategoryCount } = useYarnCategoryCount();
-	const { data: yarnColorCategoryCount } = useYarnColorCategoryCount();
+	const { data: yarnStockOverview, isLoading: yarnStockOverviewLoading } =
+		useYarnStockOverview();
+	const { data: yarnCategoryCount, isLoading: yarnCategoryCountLoading } =
+		useYarnCategoryCount();
+	const {
+		data: yarnColorCategoryCount,
+		isLoading: yarnColorCategoryCountLoading,
+	} = useYarnColorCategoryCount();
 
 	return (
 		<YJHeader
@@ -27,23 +32,27 @@ const Dashboard = () => {
 			</YJText>
 			<StatisticsCard
 				title="Total Yarn Stocks"
-				content={yarnStockOverview?.totalYarn ?? 0}
+				content={yarnStockOverview?.totalYarn}
+				loading={yarnStockOverviewLoading}
 			/>
 			<StatisticsCard
 				title="Total Reorder Yarn Stocks"
-				content={yarnStockOverview?.totalReorderYarn ?? 0}
+				content={yarnStockOverview?.totalReorderYarn}
 				contentStyle={{
 					color:
 						(yarnStockOverview?.totalReorderYarn ?? 0) > 0 ? "red" : "green",
 				}}
+				loading={yarnStockOverviewLoading}
 			/>
 			<StatisticsCard
 				title="Total Yarn Category"
-				content={yarnCategoryCount?.categoryCount ?? 0}
+				content={yarnCategoryCount?.categoryCount}
+				loading={yarnCategoryCountLoading}
 			/>
 			<StatisticsCard
 				title="Total Yarn Color Category"
-				content={yarnColorCategoryCount?.colorCategoryCount ?? 0}
+				content={yarnColorCategoryCount?.colorCategoryCount}
+				loading={yarnColorCategoryCountLoading}
 			/>
 		</YJHeader>
 	);
