@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/consistent-type-definitions */
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { useTheme } from "@rneui/themed";
+import { Icon, useTheme } from "@rneui/themed";
 import React from "react";
 import Dashboard from "../dashboard/views/Dashboard";
 import AddYarnStock from "../yarnStock/views/AddYarnStock";
@@ -60,12 +60,21 @@ const MainRouter = (): JSX.Element => {
 				lazy: true,
 			}}
 		>
-			<Drawer.Screen name={routeNames.DASHBOARD} component={Dashboard} />
+			<Drawer.Screen
+				name={routeNames.DASHBOARD}
+				component={Dashboard}
+				options={{ drawerIcon: props => <Icon {...props} name="dashboard" /> }}
+			/>
 			<Drawer.Screen
 				name={routeNames.YARN_STOCKS}
 				component={YarnStockNavigator}
+				options={{ drawerIcon: props => <Icon {...props} name="inventory" /> }}
 			/>
-			<Drawer.Screen name={routeNames.MASTER_DATA} component={MasterData} />
+			<Drawer.Screen
+				name={routeNames.MASTER_DATA}
+				component={MasterData}
+				options={{ drawerIcon: props => <Icon {...props} name="storage" /> }}
+			/>
 		</Drawer.Navigator>
 	);
 };
