@@ -11,7 +11,8 @@ declare namespace dashboard {
 	}
 
 	interface chartData {
-		x: string;
+		x: number;
 		y: number;
+		name: string;
 	}
 }

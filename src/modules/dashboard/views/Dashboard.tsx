@@ -28,12 +28,12 @@ const Dashboard = () => {
 			</YJText>
 			<StatisticsCard
 				title="Total Yarn Stocks"
-				content={yarnStockOverview?.yarnStockOverview.totalYarn}
+				textContent={yarnStockOverview?.yarnStockOverview.totalYarn}
 				loading={yarnStockOverviewLoading}
 			/>
 			<StatisticsCard
 				title="Total Reorder Yarn Stocks"
-				content={yarnStockOverview?.yarnStockOverview.totalReorderYarn}
+				textContent={yarnStockOverview?.yarnStockOverview.totalReorderYarn}
 				contentStyle={{
 					color:
 						(yarnStockOverview?.yarnStockOverview.totalReorderYarn ?? 0) > 0
@@ -44,13 +44,23 @@ const Dashboard = () => {
 			/>
 			<StatisticsCard
 				title="Total Yarn Category"
-				content={yarnStockOverview?.categoryCount}
+				textContent={yarnStockOverview?.categoryCount}
 				loading={yarnStockOverviewLoading}
 			/>
 			<StatisticsCard
-				title="Total Yarn Color Category"
-				content={yarnStockOverview?.colorCategoryCount}
+				title="Yarn Stock Yarn Category"
 				loading={yarnStockOverviewLoading}
+				chartData={yarnStockOverview?.yarnStockOverview.categoryChart}
+			/>
+			<StatisticsCard
+				title="Total Yarn Color Category"
+				textContent={yarnStockOverview?.colorCategoryCount}
+				loading={yarnStockOverviewLoading}
+			/>
+			<StatisticsCard
+				title="Yarn Stock Yarn Color Category"
+				loading={yarnStockOverviewLoading}
+				chartData={yarnStockOverview?.yarnStockOverview.colorCategoryChart}
 			/>
 		</YJHeader>
 	);
@@ -58,7 +68,7 @@ const Dashboard = () => {
 
 export default Dashboard;
 
-const useStyes = makeStyles(() => ({
+const useStyes = makeStyles(theme => ({
 	rootContainer: {
 		padding: 20,
 	},

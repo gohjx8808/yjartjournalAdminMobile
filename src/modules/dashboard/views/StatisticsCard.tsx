@@ -2,29 +2,42 @@ import { Card, makeStyles } from "@rneui/themed";
 import { type TextStyle } from "react-native";
 import YJLoadingSkeleton from "../../../sharedComponents/YJLoadingSkeleton";
 import YJText from "../../../sharedComponents/text/YJText";
+import { VictoryPie } from "victory-native";
 
 interface StatisticsCardProps {
 	title: string;
 	contentStyle?: TextStyle;
-	content?: number;
+	textContent?: number;
 	loading: boolean;
+	chartData?: dashboard.chartData[];
 }
 
 const StatisticsCard = (props: StatisticsCardProps) => {
-	const styles = useStyles();
-	const { title, contentStyle, content, loading } = props;
+	const styles = useStyles(props);
+	const { title, contentStyle, textContent, loading, chartData } = props;
 
 	return (
-		<Card containerStyle={{ padding: 50 }}>
+		<Card containerStyle={styles.cardContainer}>
 			<Card.Title h4 style={styles.secondaryTitle}>
 				{title}
 			</Card.Title>
 			{loading ? (
 				<YJLoadingSkeleton style={styles.contentSkeleton} />
-			) : (
+			) : chartData === undefined ? (
 				<YJText h1 center style={contentStyle}>
-					{content}
+					{textContent}
 				</YJText>
+			) : (
+				<VictoryPie
+					padding={{ left: 65, right: 65 }}
+					width={300}
+					height={300}
+					data={chartData}
+					colorScale="red"
+					labels={({ datum }: { datum: dashboard.chartData }) =>
+						`${datum.name}\n${datum.y}`
+					}
+				/>
 			)}
 		</Card>
 	);
@@ -32,7 +45,10 @@ const StatisticsCard = (props: StatisticsCardProps) => {
 
 export default StatisticsCard;
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme, props: StatisticsCardProps) => ({
+	cardContainer: {
+		padding: props.chartData !== undefined ? 15 : 50,
+	},
 	secondaryTitle: {
 		color: theme.colors.secondary,
 	},
