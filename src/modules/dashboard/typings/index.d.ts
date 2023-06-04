@@ -1,14 +1,17 @@
 declare namespace dashboard {
 	interface yarnStockOverview {
-		totalYarn: number;
-		totalReorderYarn: number;
-	}
-
-	interface yarnCategoryCount {
+		yarnStockOverview: {
+			totalYarn: number;
+			totalReorderYarn: number;
+			categoryChart: chartData[];
+			colorCategoryChart: chartData[];
+		};
 		categoryCount: number;
+		colorCategoryCount: number;
 	}
 
-	interface yarnColorCategoryCount {
-		colorCategoryCount: number;
+	interface chartData {
+		x: string;
+		y: number;
 	}
 }
