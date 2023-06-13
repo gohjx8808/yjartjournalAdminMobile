@@ -51,7 +51,6 @@ const MainRouter = (): JSX.Element => {
 
 	return (
 		<Drawer.Navigator
-			useLegacyImplementation={true}
 			initialRouteName={routeNames.DASHBOARD}
 			screenOptions={{
 				headerShown: false,
