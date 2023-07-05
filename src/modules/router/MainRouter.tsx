@@ -9,6 +9,7 @@ import YarnStocks from "../yarnStock/views/YarnStocks";
 import routeNames from "./routeNames";
 import MasterData from "../masterData/views/MasterData";
 import UpdateYarnStock from "../yarnStock/views/UpdateYarnStock";
+import SignIn from "../auth/views/SignIn";
 
 export type YarnStockNavigatorParamList = {
 	[routeNames.YARN_STOCKS_DETAILS]: undefined;
@@ -21,10 +22,16 @@ export type DrawerParamList = {
 	[routeNames.YARN_STOCKS]: undefined;
 };
 
+export type MainRouterParamList = {
+	[routeNames.SIGN_IN]: undefined;
+	[routeNames.DRAWER_NAV]: undefined;
+};
+
 const Drawer = createDrawerNavigator();
 const YarnStockStack = createNativeStackNavigator();
+const MainStack = createNativeStackNavigator();
 
-const YarnStockNavigator = (): JSX.Element => {
+const YarnStockNavigator = () => {
 	return (
 		<YarnStockStack.Navigator
 			initialRouteName={routeNames.YARN_STOCKS_DETAILS}
@@ -46,7 +53,7 @@ const YarnStockNavigator = (): JSX.Element => {
 	);
 };
 
-const MainRouter = (): JSX.Element => {
+const DrawerRouter = () => {
 	const { theme } = useTheme();
 
 	return (
@@ -75,6 +82,15 @@ const MainRouter = (): JSX.Element => {
 				options={{ drawerIcon: props => <Icon {...props} name="storage" /> }}
 			/>
 		</Drawer.Navigator>
+	);
+};
+
+const MainRouter = () => {
+	return (
+		<MainStack.Navigator>
+			<MainStack.Screen name={routeNames.SIGN_IN} component={SignIn} />
+			<MainStack.Screen name={routeNames.DRAWER_NAV} component={DrawerRouter} />
+		</MainStack.Navigator>
 	);
 };
 

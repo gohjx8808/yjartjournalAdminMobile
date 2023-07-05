@@ -5,6 +5,8 @@ enum routeNames {
 	ADD_YARN_STOCK = "Add Yarn Stock",
 	UPDATE_YARN_STOCK = "Update Yarn Stock",
 	MASTER_DATA = "Master Data",
+	SIGN_IN = "Sign In",
+	DRAWER_NAV = "Drawer Navigator",
 }
 
 export default routeNames;
