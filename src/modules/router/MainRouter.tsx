@@ -87,12 +87,11 @@ const DrawerRouter = () => {
 
 const MainRouter = () => {
 	return (
-		<MainStack.Navigator>
-			<MainStack.Screen
-				name={routeNames.SIGN_IN}
-				component={SignIn}
-				options={{ headerShown: false }}
-			/>
+		<MainStack.Navigator
+			initialRouteName={routeNames.SIGN_IN}
+			screenOptions={{ headerShown: false }}
+		>
+			<MainStack.Screen name={routeNames.SIGN_IN} component={SignIn} />
 			<MainStack.Screen name={routeNames.DRAWER_NAV} component={DrawerRouter} />
 		</MainStack.Navigator>
 	);

@@ -9,6 +9,9 @@ import {
 import SignInSchema from "../../../validationSchemas/SignInSchema";
 import ControlledTextInput from "../../../sharedComponents/inputs/ControlledTextInput";
 import ControlledPasswordInput from "../../../sharedComponents/inputs/ControlledPasswordInput";
+import { useSignIn } from "../src/authMutations";
+
+const ADMIN_VIEW_ROLE_ID = 1;
 
 const SignIn = () => {
 	const insets = useSafeAreaInsets();
@@ -17,7 +20,14 @@ const SignIn = () => {
 	const {
 		control,
 		formState: { errors },
+		handleSubmit,
 	} = useForm({ resolver: yupResolver(SignInSchema) });
+
+	const { mutate: submitSignIn, isLoading } = useSignIn();
+
+	const onSubmit = (hookData: auth.signInFormData) => {
+		submitSignIn({ ...hookData, role: ADMIN_VIEW_ROLE_ID });
+	};
 
 	return (
 		<ScrollView
@@ -46,10 +56,15 @@ const SignIn = () => {
 						label="Password"
 						name="password"
 						autoCapitalize="none"
-						errorMessage={errors.email?.message}
+						errorMessage={errors.password?.message}
 					/>
 				</View>
-				<Button title="Sign In" titleStyle={styles.submitBtn} />
+				<Button
+					title="Sign In"
+					titleStyle={styles.submitBtn}
+					onPress={handleSubmit(onSubmit)}
+					loading={isLoading}
+				/>
 			</Card>
 		</ScrollView>
 	);
